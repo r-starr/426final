@@ -7,7 +7,7 @@ Solitaire
 - user inferface
 - game engine itself
 
-First thing you see is a login for the user. 
+First thing you see is a login for the user. (or create an account if they want)
  - User can either update the back-side of cards ( each face card will have its own face image,
      with a default face image like a standard king, joker, etc.), 
      or play the user can just play the game.

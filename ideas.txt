@@ -1,1 +1,25 @@
-Hellooooooo testing.
+Text File for keeping track of ideas for how we will build our project.
+
+|-----------------------------------------------------------|
+Solitaire
+3 layers 
+- Data storage/communication
+- user inferface
+- game engine itself
+
+First thing you see is a login for the user. (or create an account if they want)
+ - User can either update the back-side of cards ( each face card will have its own face image,
+     with a default face image like a standard king, joker, etc.), 
+     or play the user can just play the game.
+ In playing the actual game...
+  - 4 slots at top for building Ace card and up, 1 to the top right for the loose deck. 
+  - 7 slots across for putting card stacks together.
+  - The loose deck will allow (maybe) that the user plays with klondike or solitaire. 
+There are 4 suits and 2 colors to the deck:
+ - Obviously, those colors and the suit will be reflected on each card.
+ - Graphically, the upper 1/3 of the card will be:
+      --- In the top left, the number of the card (of face value)
+      --- In the top right, the suite in the appropriate color
+      --- The bottom 2/3 is either, the scaled suit icon or the saved face image selected/saved by the user. 
+
+|-----------------------------------------------------------|

@@ -3,8 +3,27 @@ h1 {
     text-align: center;
 }
 
-.mainLogo {
-    position: absolute;
-    margin-top: center;
-    margin-left: center;
+#mainLogo {
+    position: relative;
+    margin-top: 20%;
+    margin-left: 25%;
+
+}
+
+html {
+    background: url(https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/5300640/910/607/m2/fpnw/wm0/dark-wood-background-.jpg?1541108185&s=2652d4b342c55bc129466f5869fdf031) no-repeat center center fixed;; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.login  #mainLogo{
+    position: relative;
+    margin-left: 50%;
+}
+
+.createaccount  #mainLogo {
+    position: relative;
+    margin-left: 50%;
 }

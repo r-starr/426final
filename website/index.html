@@ -10,22 +10,22 @@
     </div>
 
     <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" href="./node_modules/bulma/css/bulma.css" />
 </head>
 
 <body>
     <h1>Solitaire</h1>
-    <img src=".\images\solitaireExtraordinaireBannerLogo.png">
+    <img id="mainLogo" src=".\images\solitaireExtraordinaireBannerLogo.png">
 
     <div class="container">
-        <button id="login">Login</button>
-        <button id="createaccount">Create Account</button>
+        <button class="button is-black" id="login">Login</button>
+        <button class="button is-black" id="createaccount">Create Account</button>
     </div>
 
 
     <script src='node_modules/jquery/dist/jquery.js'></script>
     <script src="node_modules/axios/dist/axios.js"></script>
-    <script src="render.js" type="module"></script>
+    <!-- <script src="render.js" type="module"></script> -->
 </body>
 
 </html>

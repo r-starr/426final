@@ -7,6 +7,7 @@ h1 {
 
     position: relative;
     margin: auto;
+    margin-top: 100px;
     padding: 20px;
     display: grid;
     height: auto;
@@ -20,7 +21,11 @@ h1 {
     max-width: 300px;
 }
 
-
+#music {
+    margin-top: 15px;
+    margin-left: 30%;
+    visibility: visible;
+}
 
 html {
     position: fixed;
@@ -45,4 +50,24 @@ html {
     position: relative;
     margin-top: 15px;
     margin-left: 5px;
+}
+
+#screenBarTop {
+    background-color: black;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 80px;
+    padding: 0px;
+
+}
+
+#screenBar {
+    background-color: black;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 80px;
+    padding: 0px;
+
 }

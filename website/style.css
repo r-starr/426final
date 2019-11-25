@@ -21,6 +21,10 @@ h1 {
     max-width: 300px;
 }
 
+#password {
+    margin-top: 5px;
+}
+
 #music {
     margin-top: 15px;
     margin-left: 30%;

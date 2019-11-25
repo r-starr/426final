@@ -1,4 +1,4 @@
-
+import "./user_accounts/users.js";
 
 
 
@@ -6,6 +6,7 @@
 
 function login() {
     console.log("logged in");
+    if (users.js);
 }
 
 function makeaccount() {

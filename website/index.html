@@ -17,24 +17,26 @@
 </head>
 
 <body>
+    <div id="screenBarTop"> </div>
+
     <img id="mainLogo" src=".\images\solitaireExtraordinaireBannerLogoLight.png">
 
     <div class="container">
         <form id="loginForm">
             <input class="input" type="text" name="username" placeholder="username"><br>
             <input class="input" type="text" name="password" placeholder="password"><br>
-
             <button class="button is-black" id="login">Login</button>
             <button class="button is-black" id="createaccount">Create Account</button>
-
         </form>
     </div>
+    <audio src="./music/houseTheme.mp3"  id="music" autoplay="true" controls></audio> 
     </img>
 
+    <div id="screenBar"> </div>
 
     <script src='./node_modules/jquery/dist/jquery.js'></script>
     <script src="./node_modules/axios/dist/axios.js"></script>
-    <!-- <script src="render.js" type="module"></script> -->
+    <script src="render.js" type="module"></script>
 </body>
 
 </html>

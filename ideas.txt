@@ -1,22 +1,25 @@
 Text File for keeping track of ideas for how we will build our project.
 
 |-----------------------------------------------------------|
-Goodreads 2.0
+GamerWorlde
 
-Solitaire
 3 layers 
 - Data storage (relational tables and such)
 - communication 
 - user inferface/login (ie. connect to server)
 
 First thing you see is a login for the user. (or create an account if they want)
- - User can create new "books" and input information (ie. title, authors, publishers, thoughts, rating)
+ - User can create new "review" and input information (ie. title, developer, thoughts, rating[categorical])
+    - categories: soundtrack, graphics, story, overall
  - In the actual website
     - there will be a feed (much like twitter) where they can see the activity of all other users
-    - users will be able to look at their own profile and their books and such
- - users will be able to edit and delete and make new books
- - users can have custom shelves (categories)
+    - users will be able to look at their own profile and their reviews and such
+ - users will be able to edit and delete and make new reviews
  - multiple sort (author, personal ranking, alphabetical by title)
+ - UI vibes
+    - pixel art (ex. stars for likes)
+    - retro pixel art banners
+    - each review would look
 
 |-----------------------------------------------------------|
 

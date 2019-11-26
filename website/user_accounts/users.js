@@ -1,4 +1,4 @@
-const accounts = [{
+export const accountData = [{
     username: "hunna",
     password: "password",
 

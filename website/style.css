@@ -37,7 +37,7 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url(https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/5300640/910/607/m2/fpnw/wm0/dark-wood-background-.jpg?1541108185&s=2652d4b342c55bc129466f5869fdf031) no-repeat center center fixed;; 
+    background: url("..\..\images\gamerWorldeBackgroundLogo.png"); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

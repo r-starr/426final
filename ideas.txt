@@ -17,6 +17,7 @@ Login Page (.../login)
 
 Create Account Page (.../newaccount)
    - Take in the information (name, last name, email, password [am i missing anything?])
+      - find some arbitrary data to add because KMP said so ("this is what the backend stores by default in account.json")
    - creates an account
       - we dont need a verification thing (too much, fuck it)
    - routes them to login page
@@ -25,6 +26,7 @@ Home page (.../main)
    - looks a bit like the twich homepage with a grid of the most popular games (or only lol)
       - should users be able to add pictures to the games?
    - below the grid is a feed from other users (their reviews and such, like twitter)
+      - user should be able to create, update, and delete them (requirement)
    - on the left is a profile card
       - displays basic info and all that
    - User can create new "review" and input information (ie. title, developer, thoughts, rating[categorical])
@@ -36,6 +38,13 @@ Home page (.../main)
       - pixel art (ex. stars for likes)
       - retro pixel art banners
       - each review would look
+   - UI requirements
+      - dynamic data source to generate content (do not hardcode it all)
+      - consume a 3rd party API??? (still not sure what this means)
+      - how does it look and behave?
+         - is it pretty?
+         - is the use intuitive?
+         - "in particular, it should provide a pleasant user experience and demonstrate good design fundamentals"
 
 Profile (.../profile)
    - do we want the ability to add profile pictures?
@@ -44,5 +53,7 @@ Profile (.../profile)
       - able to separate them
    - other features for profile?
    - multiple sort (author, personal ranking, alphabetical by title)
+
+Check in on the functionality requirements!!
 |-----------------------------------------------------------|
 

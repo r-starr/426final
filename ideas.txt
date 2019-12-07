@@ -27,24 +27,44 @@ Home page (.../main)
       - should users be able to add pictures to the games?
    - below the grid is a feed from other users (their reviews and such, like twitter)
       - user should be able to create, update, and delete them (requirement)
+      - review
+         - text of the acutal review
+         - game it's connected to
+         - rating (numerical value represented by stars/whatever graphic we decide on)
+         - tags???
+         - date review was made (should be displayed on the review card)
+         - user who created it
+         - other info??
+      - game
+         - name
+         - developer
+         - year released
+         - link reviews (an array? database stuff)
+         - user who created it
+         - other info??
    - on the left is a profile card
       - displays basic info and all that
    - User can create new "review" and input information (ie. title, developer, thoughts, rating[categorical])
       - categories: soundtrack, graphics, story, overall
       - can also create a new game (check to make sure duplicates aren't created via checking the string title)
+      - will rating be filling in stars? (that'd be sorta cool but how hard would it be?)
    - users will be able to edit and delete and make new reviews
       - on the main page (like twitter, will this be problematic???)
-   - UI vibes
+
+UI
+   - vibes
       - pixel art (ex. stars for likes)
       - retro pixel art banners
-      - each review would look
-   - UI requirements
+      - each review would look like ...?
+   - requirements
       - dynamic data source to generate content (do not hardcode it all)
       - consume a 3rd party API??? (still not sure what this means)
       - how does it look and behave?
          - is it pretty?
          - is the use intuitive?
          - "in particular, it should provide a pleasant user experience and demonstrate good design fundamentals"
+   - include some things that were EC on twittter?
+      - infinite scrolling, selectively see reviews (should you be able to reply to a review?)
 
 Profile (.../profile)
    - do we want the ability to add profile pictures?
@@ -53,7 +73,19 @@ Profile (.../profile)
       - able to separate them
    - other features for profile?
    - multiple sort (author, personal ranking, alphabetical by title)
+   - should the user be able to have cool settings?
+      - dark mode, change email/password, etc?
 
-Check in on the functionality requirements!!
+In Summary
+Login page: login/create
+Main page: grid, feed, profile (on the left)
+   - ability to create content here
+Profile page: content created by that personal
+   - sorting own reviews?
+Data (3 tables minimum, relational ones to be added)
+   - Users
+   - Games
+   - Reviews
+
 |-----------------------------------------------------------|
 

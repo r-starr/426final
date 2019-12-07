@@ -27,10 +27,18 @@ app.use(cors());
 //const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('database.sqlite');
 
+//create table of users and their data
 db.exec('CREATE TABLE IF NOT EXISTS users (name VARCHAR, lastname VARCHAR, username VARCHAR, email VARCHAR, password VARCHAR)');
 const User = require('./models/user.js');
 let user = new User("name", "lastname", "email", "username", "password");
 user.exists();
+
+db.exec('CREATE TABLE IF NOT EXISTS reviews (game VARCHAR, rating INT, developer VARCHAR, review VARCHAR(255), date DATE, user VARCHAR');
+// const User = require('./models/user.js');
+// let user = new User("name", "lastname", "email", "username", "password");
+// user.exists();
+
+db.exec('CREATE TABLE IF NOT EXISTS games (title VARCHAR,  developer VARCHAR, yearR INT, reviews SOMETHIGN');
  
 // auto-wire routes. Must export default router, and a prefix.
 const files = fs.readdirSync(path.join(__dirname, 'routes'));

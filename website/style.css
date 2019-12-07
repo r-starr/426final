@@ -17,7 +17,7 @@ h1 {
 }
 
 .input {
-    margin-left: 30%;
+    margin-left: 35%;
     max-width: 300px;
 }
 
@@ -48,7 +48,7 @@ html {
 #login  {
     position: relative;
     margin-top: 15px;
-    margin-left: 30%;
+    margin-left: 35%;
 }
 
 #createaccount  {

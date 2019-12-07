@@ -1,21 +1,19 @@
-
-import "./user_accounts/users.js";
-import {accountData} from  './user_accounts/users.js';
-
+//import "./user_accounts/users.js";
+import {accountData}  from  './user_accounts/users.js';
 
 
 
 
 
-function login() {
+
+function login(event) {
     console.log("logged in");
-    if (users.js);
-    let posUser = $("#username").value;
-    let posPass = $("#password").value;
-    console.log(posUser);
-    loginConfirmedUser(posUser, posPass);
-
-    return false;
+    console.log(event.data);
+    // if (users.js);
+    // let posUser = $("#username").value;
+    // let posPass = $("#password").value;
+    // console.log(posUser);
+    // loginConfirmedUser(posUser, posPass);
 }
 
 export async function loginConfirmedUser(posUser, posPass) {
@@ -31,12 +29,29 @@ export async function loginConfirmedUser(posUser, posPass) {
 }
 
 
-function makeaccount(accountData) {
+function makeaccount(event) {
     console.log("created an account");
-    
-    accountData.push(accountData);
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    console.log(user + " " + pass);
+    createCookie(user, pass);
+    let newUser = {
+      username: user,
+      password: pass,
+    }
+    event.data.push(newUser);
+    alert("You're new account was created. Welcome, to Gamer Worlde.");
 
-    return false;
+    
+}
+
+function createCookie(user, pass) {
+    // special characters (spaces), need encoding
+    let name = user;
+    let value = pass;
+    // encodes the cookie as my%20name=John%20Smith
+    document.cookie = encodeURIComponent(name) + '-' + encodeURIComponent(value);
+    alert(document.cookie);
 }
 
 function controlMusic() {
@@ -46,6 +61,6 @@ function controlMusic() {
 
 $(function () {
     controlMusic();
-    $("#login").on("click", login);
-    $("#createaccount").on("click", makeaccount);
+    $("#login").on("click", null, accountData, login);
+    $("#createaccount").on("click", null, accountData, makeaccount);
 });

@@ -8,8 +8,6 @@ import {modifyUserPath} from "../middlewares/modify_user_path";
 export const router = express.Router();
 export const prefix = '/user';
 
-const {userStore} = require('../data/DataStore');
-
 /**
  * Every request needs to be from a logged in user.
  * Modify path prefixes each request with the user's name.
@@ -36,3 +34,5 @@ router.delete('/*', parseDelete, function (req, res) {
     res.send({result})
   }
 });
+
+

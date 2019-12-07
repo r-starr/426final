@@ -9,9 +9,6 @@ export const prefix = '/account';
 
 const saltRounds = 10;
 
-const {accountStore} = require('../data/DataStore');
-
-
 /**
  * This route requires a valid JWT token.
  * This means that if you hit this route with a valid JWT then
@@ -67,16 +64,28 @@ router.post('/login', async function (req, res) {
  * database.
  */
 router.post('/create', function (req, res) {
-  if (!req.body.name || !req.body.pass) {
-    res.status(401).send({msg: 'Expected a payload of name and pass.'});
+
+  const errs = validationResult(req);
+  if (!errs.isEmpty()) {
+    return res.status(422).json({
+      errors: errs.array()
+    });
+  }
+    
+  if (!req.body.name || !req.body.surname || !req.body.email || !req.body.username || !req.body.password) {
+    res.status(401).send({
+      msg: 'Expected a name, last name, email, username, and password'
+    });
     return;
   }
-
+ 
   const name = req.body.name.toLowerCase();
-  const pass = req.body.pass;
+  const lastname = req.body.lastname.toLowerCase();
+  const email = req.body.email;
+  const username = req.body.username.toLowerCase();
+  const pass = req.body.password;
 
 
-  let user = accountStore.get(`users.${name}`);
   if (user) {
     res.status(401).send({msg: `User '${req.body.name}' is already a registered user.`});
     return;

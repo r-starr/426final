@@ -7,7 +7,7 @@ h1 {
 
     position: relative;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 10%;
     padding: 20px;
     display: grid;
     height: auto;
@@ -28,7 +28,7 @@ h1 {
 #music {
     margin-top: 15px;
     margin-left: 30%;
-    visibility: visible;
+    visibility: hidden;
 }
 
 html {
@@ -37,11 +37,12 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-    background: url(https://cmkt-image-prd.freetls.fastly.net/0.1.0/ps/5300640/910/607/m2/fpnw/wm0/dark-wood-background-.jpg?1541108185&s=2652d4b342c55bc129466f5869fdf031) no-repeat center center fixed;; 
+    background-image: url("../../images/gamerWorldeBackground.png"); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: auto;
+    background-position: center;
 }
 
 #login  {

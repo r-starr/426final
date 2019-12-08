@@ -160,19 +160,19 @@ Games
       - request data: NA
       - response data: edit form + specified obj's info
       - method: GET
-      - end point: games/edit (also hidden from the users)
+      - end point: games/edit/:game_id (also hidden from the users)
    update: update specified object in database
       - URL param: game_id
       - request data: inputted stuff in edit form
       - response data: some confirmation that it happened ie. the changes
       - method: PUT
-      - end point: /games (cementing the edits)
+      - end point: /games/:game_id (cementing the edits)
    destroy: delete specified object in the database
       - URL param: game_id
       - request data: NA
       - response data: confirmation that deletion was successful
       - method: DELETE
-      - end point: /games
+      - end point: /games/:game_id
 
 Reviews
    index: display all objects

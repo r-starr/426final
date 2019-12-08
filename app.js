@@ -5,7 +5,6 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import debug from 'debug';
 import bearerToken from "express-bearer-token";
-import sqlite3 from "sqlite3";
 
 require('dotenv').config();
 
@@ -15,6 +14,14 @@ const debugAutoWireWarning = debug('auto-wire-warning');
 
 const app = express();
 
+// view engine setup
+app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+
+// register public path
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(require('morgan')('dev'));
 
 app.use(express.json());
@@ -23,38 +30,12 @@ app.use(bearerToken());
 app.use(cookieParser());
 app.use(cors());
 
-// SQLITE3
-//const sqlite3 = require('sqlite3').verbose();
-const db = new sqlite3.Database('database.sqlite');
+// Require route files
+var apiGamesRouter = require('./routes/api/games');
+var webGamesRouter = require('./routes/web/games');
 
-//create table of users and their data
-db.exec('CREATE TABLE IF NOT EXISTS users (name VARCHAR, lastname VARCHAR, username VARCHAR, email VARCHAR, password VARCHAR)');
-const User = require('./models/user.js');
-let user = new User("name", "lastname", "email", "username", "password");
-user.exists();
-
-db.exec('CREATE TABLE IF NOT EXISTS reviews (game VARCHAR, rating INT, developer VARCHAR, review VARCHAR(255), date DATE, user VARCHAR');
-// const User = require('./models/user.js');
-// let user = new User("name", "lastname", "email", "username", "password");
-// user.exists();
-
-db.exec('CREATE TABLE IF NOT EXISTS games (title VARCHAR,  developer VARCHAR, yearR INT, reviews SOMETHIGN');
- 
-// auto-wire routes. Must export default router, and a prefix.
-const files = fs.readdirSync(path.join(__dirname, 'routes'));
-files.forEach(file => {
-  const router = require(path.join(__dirname, './routes', file));
-
-  if (!router.router) {
-    debugAutoWireWarning(`'${file}' did not export a 'router'. Skipped`);
-    return;
-  }
-  if (!router.prefix) {
-    debugAutoWireWarning(`'${file}' did not export a 'prefix' path. Defaulting to '/'`);
-  }
-
-  app.use(router.prefix || '/', router.router);
-  debugAutoWire(`registered '${file}' to route '${router.prefix || '/'}'`);
-});
+// Register routes
+app.use('/api/games', apiGamesRouter.router);
+app.use('/games', webGamesRouter.router);
 
 export default app;

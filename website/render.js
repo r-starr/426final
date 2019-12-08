@@ -1,10 +1,24 @@
 //import "./user_accounts/users.js";
 import {accountData}  from  './user_accounts/users.js';
+//const {publicStore} = require('../data/DataStore');
 
 
 
+const privRoot = new axios.create({
+  baseURL: "http://localhost:3000/data/private"
+});
 
+async function createUserAccount({user, pass}) {
+    return await privRoot.post('/users/', {
+        "data": [user, pass],
+        "tyspe": "merge"
+    }) 
+  }
 
+  async function getAllUsers() {
+    return await privRoot.get('/users/');
+  }
+  
 
 function login(event) {
     console.log("logged in");
@@ -40,6 +54,14 @@ function makeaccount(event) {
       password: pass,
     }
     event.data.push(newUser);
+    (async () => {
+        await createUserAccount({
+          user,
+          pass,
+        });
+        let {data} = await getAllAuthors();
+        console.log(data)
+     })();
     alert("You're new account was created. Welcome, to Gamer Worlde.");
 
     

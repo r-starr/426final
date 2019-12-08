@@ -15,34 +15,40 @@ class gameController {
         // db.exec('INSERT INTO games (name, developer, platform, device, releaseYear, thumbnail) VALUES ("testName", "testDeveloper", "testPlatform", "testDevice", 2000-03-23, "testPicture")');
     }
 
-    index() {
+    static index() {
         let result = db.prepare('SELECT * FROM games').all();
         return result;
     }
 
-    show(params) {
+    static show(params) {
         let result = db.prepare('SELECT * FROM games WHERE id = ?').get(params['game_id']);
         return result;
     }
 
-    create() {
-        
+    static store(body) {
+        let name = body.name;
+        let developer = body.developer;
+        let platform = body.platform;
+        let device = body.device;
+        let releaseYear = body.releaseYear;
+        let thumbnail = body.thumbnail;
+
+        db.prepare('INSERT INTO games (name, developer, platform, device, releaseYear, thumbnail) VALUES (?, ?, ?, ?, ?, ?)').run(name, developer, platform, device, releaseYear, thumbnail);    
     }
 
-    store() {
-        // let result = db.prepare('SELECT * FROM games WHERE id = ?').post();
-        // return result;      
+    static update(body, params) {
+        let id = params['game_id'];
+        let name = body.name;
+        let developer = body.developer;
+        let platform = body.platform;
+        let device = body.device;
+        let releaseYear = body.releaseYear;
+        let thumbnail = body.thumbnail;
+
+        db.prepare('UPDATE games SET name = ?, developer = ?, platform = ?, device = ?, releaseYear = ?, thumbnail = ? WHERE id = ?').run(name, developer, platform, device, releaseYear, thumbnail, id);
     }
 
-    edit() {
-
-    }
-
-    update() {
-
-    }
-
-    destroy() {
+    static destroy() {
 
     }
 }

@@ -1,9 +1,3 @@
-
-
-
-
-
-
 $(function () {
 
     // $("#login").on("click", null, login);

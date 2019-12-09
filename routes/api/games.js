@@ -27,4 +27,5 @@ router.put('/:game_id', function (req, res) {
 
 //DELETE /api/games/:game_id destroy()
 router.delete('/:game_id', function (req, res) {
+    res.json(gameC.destroy(req.params));
 });

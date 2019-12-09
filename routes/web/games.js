@@ -17,3 +17,7 @@ router.get('/create', function (req, res) {
 router.get('/edit', function (req, res) {
     res.render('games/edit'); //!URL, goes to "views" folder and picks an html doc
 });
+
+router.get('/delete', function (req, res) {
+    res.render('games/delete'); //!URL, goes to "views" folder and picks an html doc
+});

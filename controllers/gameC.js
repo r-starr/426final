@@ -12,7 +12,7 @@ class gameController {
             thumbnail VARCHAR(255))`
         );
 
-        // db.exec('INSERT INTO games (name, developer, platform, device, releaseYear, thumbnail) VALUES ("testName", "testDeveloper", "testPlatform", "testDevice", 2000-03-23, "testPicture")');
+        //db.exec('INSERT INTO reviews (name, develpoer, platform, device, releaseYear, thumbnail) VALUES ("testName", "testDeveloper", "testPlatform", "testDevice", 2000-03-23, "testPicture")');
     }
 
     static index() {
@@ -48,8 +48,8 @@ class gameController {
         db.prepare('UPDATE games SET name = ?, developer = ?, platform = ?, device = ?, releaseYear = ?, thumbnail = ? WHERE id = ?').run(name, developer, platform, device, releaseYear, thumbnail, id);
     }
 
-    static destroy() {
-
+    static destroy(params) {
+        db.prepare('DELETE FROM games WHERE id = ?').run(params['game_id']);
     }
 }
 

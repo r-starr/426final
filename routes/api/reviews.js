@@ -7,7 +7,10 @@ var reviewC = require('../../controllers/reviewC');
 
 //GET /api/reviews index()
 router.get('/', function (req, res) {
-    res.json(reviewC.index());
+    console.log("trying to make database");
+    let rc = new reviewC;
+    res.json(rc.index());
+    //res.json(reviewC.index());
 });
 
 //GET /api/games/:review_id show()

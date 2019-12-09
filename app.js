@@ -33,13 +33,30 @@ app.use(cookieParser());
 app.use(cors());
 
 // Require route files
-var apiGamesRouter = require('./routes/api/games');
-var webGamesRouter = require('./routes/web/games');
-var webHomeRouter = require('./routes/web/home')
+
+var webHomeRouter = require('./routes/web/home');
+var webLoginRouter = require('./routes/web/login');
 
 // Register routes
+app.use('/home', webHomeRouter.router);
+app.use('/login', webLoginRouter.router);
+
+//user routes
+var apiUsersRouter = require('./routes/api/users');
+var webUsersRouter = require('./routes/web/users');
+app.use('/api/users', apiUsersRouter.router);
+app.use('/users', webUsersRouter.router);
+
+//game routes
+var apiGamesRouter = require('./routes/api/games');
+var webGamesRouter = require('./routes/web/games');
 app.use('/api/games', apiGamesRouter.router);
 app.use('/games', webGamesRouter.router);
-app.use('/home', webHomeRouter.router);
+
+//review routes
+var apiReviewsRouter = require('./routes/api/reviews');
+var webReviewsRouter = require('./routes/web/reviews');
+app.use('/api/users', apiReviewsRouter.router);
+app.use('/users', webReviewsRouter.router);
 
 export default app;

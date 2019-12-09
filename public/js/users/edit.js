@@ -1,12 +1,11 @@
-window.onload = function ()
-{
+window.onload = function () {
     //editUsers();
 };
 
-async function editGame() {
+async function editUsers(id) {
     const result = await axios({
         method: 'put',
-        url: '/api/users',
+        url: '/api/users/' + id,
         data: {
             "first_name": "Hunter 2",
             "last_name": "Jamison 2",

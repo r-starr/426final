@@ -3,7 +3,7 @@ var db = require('better-sqlite3')('./database.db');
 class userController {
     constructor() {
         db.exec(`CREATE TABLE IF NOT EXISTS users (
-            id INTEGER,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             first_name VARCHAR,
             last_name VARCHAR,
             email VARCHAR,
@@ -30,7 +30,7 @@ class userController {
         let username = body.username;
         let password = body.password;
 
-        let reuslt = db.prepare('INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)').run(first_name, last_name, email, username, password); 
+        let result = db.prepare('INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)').run(first_name, last_name, email, username, password); 
         return result;
     }
 
@@ -46,9 +46,13 @@ class userController {
         return result;
     }
 
-    static destroy() {
+    static destroy(params) {
         let result = db.prepare('DELETE FROM users WHERE id = ?').run(params['user_id']);
         return result;
     }
+
+    // destroyTable() {
+    //     db.exec('DROP TABLE users');
+    // }
 }
 module.exports = userController;

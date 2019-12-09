@@ -14,7 +14,7 @@ class reviewController {
         );
     }
 
-    static index() {
+    index() {
         let result = db.prepare('SELECT * FROM reviews').all();
         return result;
     }
@@ -32,7 +32,7 @@ class reviewController {
         let dateCreated = body.dateCreated;
         let dateUpdated = body.dateUpdated;
 
-        db.prepare('INSERT INTO reviews (user_id, game_id, text, rating, dateCreated, dateUpdated) VALUES (?, ?, ?, ?, ?, ?)').run(user_id, game_id, text, rating, dateCreated, dateUpdated);     
+        db.prepare('INSERT INTO reviews (user_id, game_id, text, rating, dateCreated, dateUpdated) VALUES (?, ?, ?, ?, ?, ?)').run(user_id, game_id, text, rating, dateCreated, dateUpdated);
     }
 
     static update(body, params) {
@@ -41,11 +41,11 @@ class reviewController {
         let rating = body.rating;
         let dateUpdated = body.dateUpdated;
 
-        db.prepare('UPDATE reviews SET  text =  ?, rating = ?, dateUpdated = ? WHERE id = ?').run(text, rating, dateUpdated, id); 
+        db.prepare('UPDATE reviews SET  text =  ?, rating = ?, dateUpdated = ? WHERE id = ?').run(text, rating, dateUpdated, id);
     }
 
-    destroy(params) {
+    static destroy(params) {
         db.prepare('DELETE FROM reviews WHERE id = ?').run(params['review_id']);
     }
 }
-    module.exports = reviewController;
+module.exports = reviewController;

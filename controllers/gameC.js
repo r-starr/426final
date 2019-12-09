@@ -51,6 +51,9 @@ class gameController {
     static destroy(params) {
         db.prepare('DELETE FROM games WHERE id = ?').run(params['game_id']);
     }
-}
 
+    destroyTable () {
+        db.exec('DROP TABLE games');
+    }
+}
 module.exports = gameController;

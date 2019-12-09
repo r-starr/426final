@@ -7,8 +7,8 @@ var userC = require('../../controllers/userC');
 
 //GET /api/reviews index()
 router.get('/', function (req, res) {
-    //let uc = new userC;
-    //res.json(uc.index());
+    // let uc = new userC;
+    // res.json(uc.index());
     res.json(userC.index());
 });
 

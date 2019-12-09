@@ -7,6 +7,8 @@ var gameC = require('../../controllers/gameC');
 
 //GET /api/games index()
 router.get('/', function (req, res) {
+    // let gc = new gameC();
+    // res.json(gc.index());
     res.json(gameC.index());
 });
 

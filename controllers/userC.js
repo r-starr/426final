@@ -51,8 +51,8 @@ class userController {
         return result;
     }
 
-    // destroyTable() {
-    //     db.exec('DROP TABLE users');
-    // }
+    destroyTable() {
+        db.exec('DROP TABLE users');
+    }
 }
 module.exports = userController;

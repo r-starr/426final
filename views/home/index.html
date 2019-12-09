@@ -2,33 +2,32 @@
 <html>
 
 <head>
-    <title>GAMERWORLDE</title>
+    <title>Gamer Worlde</title>
     <link rel="stylesheet" href="/node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="navbar-brand">
-            <a class="navbar-item" href="./">
-                gamerworlde
-            </a>
+        <div class="navbar-brand" id="topBar">
+                <img visibility=hidden id="mainLogo" src="/public/img/gamerWorldeLogo.png">
         </div>
         <div class="navbar-menu">
             <div class="navbar-start"></div>
-            <a class="navbar-item" href="./">
-                    home
+            <a class="button is-dark" id="nav1" href="./">
+                    Create
                 </a>
-            <a class="navbar-item" href="./">
-                    home
+            <a class="button is-dark" id="nav2" href="/views/index.html">
+                    Login
                 </a>
             <div class="navbar-end"></div>
         </div>
     </nav>
+    <div id="blackBar"></div> 
     <section class="section">
         <div class="container">
             <div class="columns">
                 <div id="feedContent" class="column">
-                    review column
                 </div>
                 <div class="column is-one-quarter">
                     <div id="userContent" class="box">user info

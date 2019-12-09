@@ -1,0 +1,62 @@
+#topBar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: url("/public/img/dark-wood-background-.jpg");
+    height: 100px;
+    background-size: auto;
+    background-position: center;
+}
+
+#nav1 {
+    margin-top: 50px;
+    margin-left: 75%;
+    background: black;
+    text-decoration-color: white;
+    border-style: solid;
+    border: white;
+}
+
+#nav2 {
+    margin-top: 50px;
+    margin-left: 2px;
+    background: black;
+    text-decoration-color: white;
+    border-style: solid;
+    border: white;
+}
+
+#mainLogo {
+    margin-left: 15px;
+    margin-top: 20px;
+    height: 75px;
+    width: auto;
+}
+
+html {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("/public/img/pexlated-wood.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: auto;
+    background-position: center;
+}
+
+#blackBar {
+    background-color: black;
+    position: relative;
+    top: 0px;
+    width: auto;
+    height: 20px;
+}
+
+#feedContent {
+    background-color:  black;
+    height: auto;
+}

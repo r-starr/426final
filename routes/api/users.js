@@ -7,6 +7,8 @@ var userC = require('../../controllers/userC');
 
 //GET /api/reviews index()
 router.get('/', function (req, res) {
+    //let uc = new userC;
+    //res.json(uc.index());
     res.json(userC.index());
 });
 
@@ -22,6 +24,7 @@ router.post('/', function (req, res) {
 
 //PUT /api/reviews/:review_id update()
 router.put('/:user_id', function (req, res) {
+    console.log("api/users with a 'put' request");
     res.json(userC.update(req.body, req.params));
 });
 

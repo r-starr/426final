@@ -5,7 +5,7 @@ const endpoint = "/users";
 
 //GET /users --> renders index.html (in view)
 router.get('/', function (req, res) {
-    res.render('user/index'); //!URL, goes to "views" folder and picks an html doc
+    res.render('users/index'); //!URL, goes to "views" folder and picks an html doc
 });
 
 //GET /users/create --> renders create.html (in view)

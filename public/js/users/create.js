@@ -1,5 +1,5 @@
 window.onload = function () {
-    makeUser();
+    //makeUser();
 }
 
 async function makeUser() {
@@ -7,10 +7,10 @@ async function makeUser() {
         method: 'post',
         url: '/api/users',
         data: {
-            "first_name": "Hunter",
-            "last_name": "Jamison",
-            "email": "hunterrjamison@gmail.com",
-            "username": "hunna",
+            "first_name": "Rachel",
+            "last_name": "Starr",
+            "email": "starr.raylin@gmail.com",
+            "username": "rstarr",
             "password": "resNET_2k19"
         },
     });

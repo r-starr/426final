@@ -55,10 +55,10 @@ html {
 
 #feedContent {
     position: relative;
-    background-color:  black;
+    background-color:  rgb(187, 162, 19);
     min-height: 1000px;
     height: auto;
-    margin-top: 50px;
+    margin-top: 35px;
 }
 
 #userContent {
@@ -67,6 +67,7 @@ html {
     margin-left: auto;
     width: 25%;
     height: auto;
+    background-color: rgb(170, 170, 170);
 }
 
 #userIco {

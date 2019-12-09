@@ -1,12 +1,5 @@
-async function getReview(reviewId) {
-    const reply = await axios({
-        method: 'get',
-        url: `/api/reviews/${reviewId}`
-    });
-    return reply.data;
-}
 
-async function renderReviewCard(review) {
+function renderReviewCard(review) {
     let reviewElement = $(`<div id="${review.id}" class="card"></div>`);
     reviewElement.append($(`<p>${review.user_id}</p>`));
     reviewElement.append($(`<p>${review.game_id}</p>`));
@@ -17,14 +10,6 @@ async function renderReviewCard(review) {
     $("#feedContent").append(reviewElement);
 }
 
-async function getReviewFeed() {
-    const reply = await axios({
-        method: 'get',
-        url: "http://localhost:3000/reviews/"
-    });
-    return reply.data;
-}
-
 async function renderReviewFeed() {
     const reviews = await getReviewFeed();
     for (let i = 0; i < reviews.length; i++) {
@@ -32,23 +17,7 @@ async function renderReviewFeed() {
     }
 }
 
-async function getGame(gameId) {
-    const reply = await axios({
-        method: 'get',
-        url: `/api/games/${gameId}`
-    });
-    return reply.data;
-}
-
-async function getFullGameList() {
-    const reply = await axios({
-        method: 'get',
-        url: '/api/games/'
-    });
-    return reply.data;
-}
-
-async function renderGameCard(game) {
+function renderGameCard(game) {
     let gameElement = $(`<div id="${game.id}" class="card"></div>`);
     gameElement.append($(`<p>${game.id}</p>`));
     gameElement.append($(`<p>${game.name}</p>`));
@@ -59,6 +28,14 @@ async function renderGameCard(game) {
     $("#feedContent").append(gameElement);
 }
 
+function generateGameCard(game) {
+    let cardContainer = $(`<div id='game_${game.id}' class='card'><div class='card-content'></div></div>`);
+    let cardContent = $(cardContainer.find(".card-content")[0]);
+    let gameInfo = `<h1 class="title">${game.name}</h1><h2 class="title">`;
+    cardContent.append(content);
+    return cardContainer;
+}
+
 async function renderFullGameList() {
     let games = await getFullGameList();
     for (let i = 0; i < games.length; i++) {
@@ -66,7 +43,9 @@ async function renderFullGameList() {
     }
 }
 
+function generateCardFooter() {
+
+}
 
 $(document).ready(() => {
-    renderFullGameList();
 });

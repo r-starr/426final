@@ -36,10 +36,12 @@ app.use(cors());
 
 var webHomeRouter = require('./routes/web/home');
 var webLoginRouter = require('./routes/web/login');
+var webProfileRouter = require('./routes/web/profile');
 
 // Register routes
 app.use('/home', webHomeRouter.router);
-app.use('/login', webLoginRouter.router);
+app.use('/', webLoginRouter.router);
+app.use('/profile', webProfileRouter.router);
 
 //user routes
 var apiUsersRouter = require('./routes/api/users');

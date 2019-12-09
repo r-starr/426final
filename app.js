@@ -35,9 +35,11 @@ app.use(cors());
 // Require route files
 var apiGamesRouter = require('./routes/api/games');
 var webGamesRouter = require('./routes/web/games');
+var webHomeRouter = require('./routes/web/home')
 
 // Register routes
 app.use('/api/games', apiGamesRouter.router);
 app.use('/games', webGamesRouter.router);
+app.use('/home', webHomeRouter.router);
 
 export default app;

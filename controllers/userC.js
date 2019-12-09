@@ -19,8 +19,8 @@ class userController {
     }
 
     show(params) {
-        // let result = db.prepare('SELECT * FROM users WHERE id = ?').get(params['game_id']);
-        // return result;
+        let result = db.prepare('SELECT * FROM users WHERE id = ?').get(params['user_id']);
+        return result;
     }
 
     store() {

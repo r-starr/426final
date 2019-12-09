@@ -1,5 +1,5 @@
 //import "./user_accounts/users.js";
-import {accountData}  from  '../../website/user_accounts/users.js';
+//import {accountData}  from  '../../website/user_accounts/users.js';
 //const {publicStore} = require('../data/DataStore');
 
 
@@ -22,7 +22,9 @@ async function createUserAccount({user, pass}) {
 
 function login(event) {
     console.log("logged in");
-    console.log(event.data);
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    console.log(user, pass);
     // if (users.js);
     // let posUser = $("#username").value;
     // let posPass = $("#password").value;
@@ -53,15 +55,15 @@ function makeaccount(event) {
       username: user,
       password: pass,
     }
-    event.data.push(newUser);
-    (async () => {
-        await createUserAccount({
-          user,
-          pass,
-        });
-        let {data} = await getAllAuthors();
-        console.log(data)
-     })();
+    //event.data.push(newUser);
+    // (async () => {
+    //     await createUserAccount({
+    //       user,
+    //       pass,
+    //     });
+    //     let {data} = await getAllAuthors();
+    //     console.log(data)
+    //  })();
     alert("You're new account was created. Welcome, to Gamer Worlde.");
 
     
@@ -82,7 +84,7 @@ function controlMusic() {
 }
 
 $(function () {
-    controlMusic();
-    $("#login").on("click", null, accountData, login);
-    $("#createaccount").on("click", null, accountData, makeaccount);
+    //controlMusic();
+    $("#login").on("click", null, login);
+    $("#createaccount").on("click", null, makeaccount);
 });

@@ -5,21 +5,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href=".\images\Cowboy-icon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="/public/img/Cowboy-icon.ico" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="./public/img/Cowboy-icon.ico" />
     <div>
         <title>
             Gamer Worlde
         </title>
     </div>
 
-    <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
-    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <link rel="stylesheet" href="/node_modules/bulma/css/bulma.css" />
+
+    <link rel="stylesheet" href="\node_modules\bulma\css\bulma.css" />
+
+    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
 </head>
 
 <body>
     <div id="screenBarTop"> </div>
 
-     <img visibility=hidden id="mainLogo" src=".\images\gamerWorldeLogo.png"> 
+     <img visibility=hidden id="mainLogo" src="/public/img/gamerWorldeLogo.png"> 
 
     <div class="container">
         <div id="loginForm">
@@ -29,14 +35,14 @@
             <button class="button is-black" id="createaccount">Create Account</button>
         </div>
     </div>
-    <audio src="./music/houseTheme.mp3"  id="music" controls autoplay></audio> 
+   <!-- <audio src="./music/houseTheme.mp3"  id="music" controls autoplay></audio> -->
     </img>
 
     <div id="screenBar"> </div>
 
-    <script src='./node_modules/jquery/dist/jquery.js'></script>
-    <script src="./node_modules/axios/dist/axios.js"></script>
-    <script src="render.js" type="module"></script>
+    <script src='../node_modules/jquery/dist/jquery.js'></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="/public/js/render.js" type="module"></script>
 </body>
 
 </html>

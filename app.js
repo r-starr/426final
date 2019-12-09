@@ -56,7 +56,7 @@ app.use('/games', webGamesRouter.router);
 //review routes
 var apiReviewsRouter = require('./routes/api/reviews');
 var webReviewsRouter = require('./routes/web/reviews');
-app.use('/api/users', apiReviewsRouter.router);
-app.use('/users', webReviewsRouter.router);
+app.use('/api/reviews', apiReviewsRouter.router);
+app.use('/reviews', webReviewsRouter.router);
 
 export default app;

@@ -4,11 +4,11 @@ class userController {
     constructor() {
         db.exec(`CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            first_name VARCHAR,
-            last_name VARCHAR,
-            email VARCHAR,
-            username VARCHAR,
-            password VARCHAR
+            first_name VARCHAR(255),
+            last_name VARCHAR(255),
+            email VARCHAR(255),
+            username VARCHAR(255),
+            password VARCHAR(255)
             )`
         );
     }

@@ -7,8 +7,10 @@ var reviewC = require('../../controllers/reviewC');
 
 //GET /api/reviews index()
 router.get('/', function (req, res) {
-    // let rc = new reviewC;
-    // res.json(rc.index());
+    //let rc = new reviewC;
+    //res.json(rc.index());
+    //res.json(rc.destroyTable());
+
     res.json(reviewC.index());
 });
 

@@ -6,10 +6,10 @@ class reviewController {
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id	INTEGER,
                 game_id	INTEGER,
-                text VARCHAR(255),
+                text VARCHAR,
                 rating INTEGER,
-                dateCreated DATE,
-                dateUpdated DATE,
+                date_created DATE,
+                date_updated DATE,
                 FOREIGN KEY (user_id) REFERENCES users (id),
                 FOREIGN KEY (game_id) REFERENCES games (id)
             )`
@@ -31,10 +31,10 @@ class reviewController {
         let game_id = body.game_id;
         let text = body.text;
         let rating = body.rating;
-        let dateCreated = body.dateCreated;
-        let dateUpdated = body.dateUpdated;
+        let date_created = body.date_created;
+        let date_updated = body.date_updated;
 
-        let result = db.prepare('INSERT INTO reviews (user_id, game_id, text, rating, dateCreated, dateUpdated) VALUES (?, ?, ?, ?, ?, ?)').run(user_id, game_id, text, rating, dateCreated, dateUpdated);
+        let result = db.prepare('INSERT INTO reviews (user_id, game_id, text, rating, date_created, date_updated) VALUES (?, ?, ?, ?, ?, ?)').run(user_id, game_id, text, rating, date_created, date_updated);
         return result;
     }
 
@@ -43,9 +43,11 @@ class reviewController {
         let user_id = body.user_id;
         let text = body.text;
         let rating = body.rating;
-        let dateUpdated = body.dateUpdated;
 
-        let result = db.prepare('UPDATE reviews SET user_id = ?, text =  ?, rating = ?, dateUpdated = ? WHERE id = ?').run(user_id, text, rating, dateUpdated, id);
+        var d = new Date();
+        let date = d.getFullYear() + '-' + (d.getMonth() +1) +  '-' + d.getDate();
+
+        let result = db.prepare('UPDATE reviews SET user_id = ?, text =  ?, rating = ?, date_updated = ? WHERE id = ?').run(user_id, text, rating, date, id);
         return result;
     }
 

@@ -1,8 +1,8 @@
 
+
 function renderGameCard() {
     
   }
-
 
 $(function () {
     // $("#login").on("click", null, login);

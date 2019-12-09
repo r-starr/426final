@@ -1,6 +1,7 @@
 //import "./user_accounts/users.js";
 //import {accountData}  from  '../../website/user_accounts/users.js';
 //const {publicStore} = require('../data/DataStore');
+
 $(function () {
   $("#login").on("click", null, login);
   $("#createaccount").on("click", null, makeaccount);
@@ -16,6 +17,7 @@ function login() {
     //proceed with login
   }
   //what do do when you can't login
+  alert("Unable to login. User does not exist.");
 }
 
 export async function loginConfirmedUser(posUser, posPass) {
@@ -35,7 +37,7 @@ function makeaccount(event) {
   console.log("created an account");
   let user = document.getElementById("username").value;
   let pass = document.getElementById("password").value;
-  console.log(user + " " + pass);
+  //console.log(user + " " + pass);
   createCookie(user, pass);
 
   const result = await axios({
@@ -59,7 +61,7 @@ function createCookie(user, pass) {
   let value = pass;
   // encodes the cookie as my%20name=John%20Smith
   document.cookie = encodeURIComponent(name) + '-' + encodeURIComponent(value);
-  alert(document.cookie);
+  //alert(document.cookie);
 }
 
 function controlMusic() {

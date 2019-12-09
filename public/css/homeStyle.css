@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background-image: url("/public/img/dark-wood-background-.jpg");
+    background-image: url("/public/img/pixelatedControl.png");
     height: 100px;
     background-size: auto;
     background-position: center;
@@ -36,7 +36,8 @@ html {
     bottom: 0;
     left: 0;
     right: 0;
-    background-image: url("/public/img/pexlated-wood.png");
+   /* background-image: url("/public/img/pexlated-wood.png"); */
+   background-color: white;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -12,8 +12,6 @@ class reviewController {
                 dateUpdated DATE,
             )`
         );
-
-        db.exec('INSERT INTO reviews (user_id, game_id, body, rating, dateCreated, dateUpdated) VALUES ("1", "2", "this game is fun", "4", "2001-01-01", "2001-01-02")');
     }
 
     static index() {

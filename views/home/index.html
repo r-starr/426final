@@ -3,23 +3,23 @@
 
 <head>
     <title>Gamer Worlde</title>
-    <link rel="stylesheet" href="/node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/public/node_modules/bulma/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
 </head>
 
 <body>
     <nav class="navbar">
         <div class="navbar-brand" id="topBar">
-                <img visibility=hidden id="mainLogo" src="/public/img/gamerWorldeLogo.png">
+            <img visibility="hidden" id="mainLogo" src="/public/img/gamerWorldeLogo.png">
         </div>
         <div class="navbar-menu">
             <div class="navbar-start" id="myNav">
             <a class="button is-dark" id="nav" href="./">
-                    Create Account
-                </a>
+                Create Account
+            </a>
             <a class="button is-dark" id="nav" href="/views/login.html">
-                    Login
-                </a>
+                Login
+            </a>
             </div>
             <div class="navbar-end"></div> 
             <div id="blackBar"></div> 
@@ -41,15 +41,13 @@
                         <span id="userBio"> If you're reading this. You aren't logged in.
                              That is an oof. Go hit the create account button at the top.</br></span>
                         <div class="button is-dark" id="buttonWriteReview"> Write a Review </div>
-                        
                     </div>
-
                 </div>
             </div>
         </div>
     </section>
-    <script src='../node_modules/jquery/dist/jquery.js'></script>
-    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/node_modules/axios/dist/axios.js"></script>
     <script src="/public/js/homeRender.js" type="module"></script>
 </body>
 

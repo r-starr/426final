@@ -34,12 +34,19 @@ app.use(cors());
 
 // Require route files
 
+<<<<<<< HEAD
 var webHomeRouter = require('./routes/web/home');
 var webLoginRouter = require('./routes/web/login');
 
 // Register routes
 app.use('/home', webHomeRouter.router);
 app.use('/login', webLoginRouter.router);
+=======
+var webHomeRouter = require('./routes/web/home')
+
+// Register routes
+app.use('/home', webHomeRouter.router);
+>>>>>>> 9147554f2d8340bd80416a3a5dd7da29b5e28725
 
 //user routes
 var apiUsersRouter = require('./routes/api/users');

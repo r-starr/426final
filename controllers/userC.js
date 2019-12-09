@@ -13,27 +13,42 @@ class userController {
         );
     }
 
-    index() {
+    static index() {
         let result = db.prepare('SELECT * FROM users').all();
         return result;
     }
 
-    show(params) {
+    static show(params) {
         let result = db.prepare('SELECT * FROM users WHERE id = ?').get(params['user_id']);
         return result;
     }
 
-    store() {
-        // let result = db.prepare('SELECT * FROM games WHERE id = ?').post();
-        // return result;      
+    static store(body) {
+        let first_name = body.first_name
+        let last_name = body.last_name;
+        let email = body.email;
+        let username = body.username;
+        let password = body.password;
+
+        let reuslt = db.prepare('INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)').run(first_name, last_name, email, username, password); 
+        return result;
     }
 
-    update() {
+    static update(body, params) {
+        let id = params['user_id'];
+        let first_name = body.first_name
+        let last_name = body.last_name;
+        let email = body.email;
+        let username = body.username;
+        let password = body.password;
 
+        let result = db.prepare('UPDATE users SET first_name = ?, last_name = ?, email = ?, username = ?, password = ? WHERE id = ?').run(first_name, last_name, email, username, password, id); 
+        return result;
     }
 
-    destroy() {
-
+    static destroy() {
+        let result = db.prepare('DELETE FROM users WHERE id = ?').run(params['user_id']);
+        return result;
     }
 }
 module.exports = userController;

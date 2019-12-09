@@ -3,7 +3,7 @@ async function getReview(reviewId) {
         method: 'get',
         url: `/api/reviews/${reviewId}`
     });
-    return reply;
+    return reply.data;
 }
 
 async function renderReviewCard(review) {
@@ -22,19 +22,51 @@ async function getReviewFeed() {
         method: 'get',
         url: "http://localhost:3000/reviews/"
     });
-    return reply;
+    return reply.data;
 }
-
-
 
 async function renderReviewFeed() {
     const reviews = await getReviewFeed();
-    for(let i = 0; i < reviews.length; i++) {
+    for (let i = 0; i < reviews.length; i++) {
         renderReviewCard(reviews[i]);
+    }
+}
+
+async function getGame(gameId) {
+    const reply = await axios({
+        method: 'get',
+        url: `/api/games/${gameId}`
+    });
+    return reply.data;
+}
+
+async function getFullGameList() {
+    const reply = await axios({
+        method: 'get',
+        url: '/api/games/'
+    });
+    return reply.data;
+}
+
+async function renderGameCard(game) {
+    let gameElement = $(`<div id="${game.id}" class="card"></div>`);
+    gameElement.append($(`<p>${game.id}</p>`));
+    gameElement.append($(`<p>${game.name}</p>`));
+    gameElement.append($(`<p>${game.developer}</p>`));
+    gameElement.append($(`<p>${game.platform}</p>`));
+    gameElement.append($(`<p>${game.device}</p>`));
+    gameElement.append($(`<p>${game.releaseYear}</p>`));
+    $("#feedContent").append(gameElement);
+}
+
+async function renderFullGameList() {
+    let games = await getFullGameList();
+    for (let i = 0; i < games.length; i++) {
+        renderGameCard(games[i]);
     }
 }
 
 
 $(document).ready(() => {
-    renderReviewFeed();
+    renderFullGameList();
 });

@@ -23,17 +23,9 @@ class userController {
         // return result;
     }
 
-    create() {
-
-    }
-
     store() {
         // let result = db.prepare('SELECT * FROM games WHERE id = ?').post();
         // return result;      
-    }
-
-    edit() {
-
     }
 
     update() {

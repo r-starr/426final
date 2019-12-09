@@ -1,6 +1,6 @@
 window.onload = function () 
 {
-    renderGames();
+    //renderGames();
 }
 
 async function renderGames() 

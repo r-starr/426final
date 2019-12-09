@@ -6,6 +6,8 @@ import cors from "cors";
 import debug from 'debug';
 import bearerToken from "express-bearer-token";
 
+//var db = require('better-sqlite3')('./database.db');
+
 require('dotenv').config();
 
 // Loggers used. Environment variables used to limit output

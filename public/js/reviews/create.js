@@ -1,18 +1,21 @@
 window.onload = function () {
-    //makeReview();
+    makeReview();
 };
 
 async function makeReview() {
+    var d = new Date();
+    let date = d.getFullYear() + '-' + (d.getMonth() +1) +  '-' + d.getDate();
+
     const result = await axios({
         method: 'post',
         url: '/api/reviews',
         data: {
-            "user_id": "2", //rachel
-            "game_id": "16", //breath of the wild
-            "text": "Really cool game, liked the graphics",
-            "rating": "4",
-            "dateCreated": "2019",
-            "dateUpdated": "2019"
+            "user_id": "1",
+            "game_id": "4",
+            "text": "one of my favorites",
+            "rating": "5",
+            "date_created": date,
+            "date_updated": date
         },
     });
 }

@@ -9,7 +9,8 @@ class gameController {
             platform VARCHAR(255),
             device VARCHAR(255),
             releaseYear	DATE,
-            thumbnail VARCHAR(255))`
+            thumbnail VARCHAR(255)
+            )`
         );
 
         //db.exec('INSERT INTO reviews (name, develpoer, platform, device, releaseYear, thumbnail) VALUES ("testName", "testDeveloper", "testPlatform", "testDevice", 2000-03-23, "testPicture")');
@@ -51,6 +52,9 @@ class gameController {
     static destroy(params) {
         db.prepare('DELETE FROM games WHERE id = ?').run(params['game_id']);
     }
-}
 
+    destroyTable () {
+        db.exec('DROP TABLE games');
+    }
+}
 module.exports = gameController;

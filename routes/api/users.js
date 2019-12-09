@@ -9,6 +9,8 @@ var userC = require('../../controllers/userC');
 router.get('/', function (req, res) {
     //let uc = new userC;
     //res.json(uc.index());
+    //res.json(uc.destroyTable());
+
     res.json(userC.index());
 });
 

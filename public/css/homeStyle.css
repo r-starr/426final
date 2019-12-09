@@ -62,8 +62,16 @@ html {
 
 #userContent {
     position: fixed;
-    margin-top: 50px;
+    margin-top: 25px;
     margin-left: auto;
     width: 25%;
-    height: 60%;
+    height: auto;
+}
+
+#userIco {
+    size: 128px;
+}
+
+#nameOfUser {
+    margin-left: 25%;
 }

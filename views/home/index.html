@@ -15,9 +15,9 @@
         <div class="navbar-menu">
             <div class="navbar-start" id="myNav">
             <a class="button is-dark" id="nav" href="./">
-                    Create
+                    Create Account
                 </a>
-            <a class="button is-dark" id="nav" href="/views/index.html">
+            <a class="button is-dark" id="nav" href="/views/login.html">
                     Login
                 </a>
             </div>
@@ -32,15 +32,25 @@
                 <div id="feedContent" class="column">
                 </div>
                 <div class="column is-one-quarter">
-                    <div id="userContent" class="box">user info
+
+                    <div id="userContent" class="box">
+                        <div id="nameOfUser"> User Name Here.</div>
                         <figure class="image is-square">
-                            <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                            <img class="is-rounded" id="userIco" src="/public/img/twins.png">
                         </figure>
+                        <span id="userBio"> If you're reading this. You aren't logged in.
+                             That is an oof. Go hit the create account button at the top.</br></span>
+                        <div class="button is-dark" id="buttonWriteReview"> Write a Review </div>
+                        
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
+    <script src='../node_modules/jquery/dist/jquery.js'></script>
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="/public/js/homeRender.js" type="module"></script>
 </body>
 
 </html>

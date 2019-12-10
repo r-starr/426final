@@ -1,44 +1,56 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
-    <title>Gamer Worlde</title>
-    <link rel="stylesheet" type="text/css" href="/public/node_modules/bulma/css/bulma.min.css">
-    <link rel="stylesheet" type="text/css" href="/public/css/homeStyle.css">
+    <title>gamerworlde</title>
+    <link rel="stylesheet" href="/public/node_modules/bulma/css/bulma.css">
+    <link rel="stylesheet" href="/public/css/home.css">
 </head>
 
 <body>
     <nav class="navbar">
-        <div class="navbar-brand" id="topBar">
-            <img visibility="hidden" id="mainLogo" src="/public/img/gamerWorldeLogo.png">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+            </a>
         </div>
         <div class="navbar-menu">
-            <div class="navbar-start" id="myNav">
-            <a class="button is-dark" id="nav" href="/views/home/index">
-                Logout
-            </a>
+            <div class="navbar-start">
+                <a class="navbar-item" src="/home/">
+                    Home
+                </a>
             </div>
-            <div class="navbar-end"></div> 
-            <div id="blackBar"></div> 
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light">
+                          Log in
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </nav>
-   <!-- <div id="blackBar"></div> -->
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div id="feedContent" class="column">
-                </div>
                 <div class="column is-one-quarter">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
 
-                    <div id="userContent" class="box">
-                        <div id="nameOfUser"> User Name Here.</div>
-                        <figure class="image is-square">
-                            <img class="is-rounded" id="userIco" src="/public/img/twins.png">
-                        </figure>
-                        <span id="userBio"> If you're reading this. You aren't logged in.
-                             That is an oof. Go hit the create account button at the top.</br></span>
-                        <div class="button is-dark" id="buttonWriteReview"> Write a Review </div>
+                        </div>
                     </div>
+                </div>
+                <div id="feedContent" class="column">
                 </div>
             </div>
         </div>
@@ -46,7 +58,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/node_modules/axios/dist/axios.js"></script>
     <script src="/public/js/requests.js"></script>
-    <script src="/public/js/home/render.js" type="module"></script>
+    <script src="/public/js/home/render.js"></script>
 </body>
 
 </html>

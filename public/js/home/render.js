@@ -1,31 +1,56 @@
 
 async function renderReviewCard(review) {
-    let reviewElement = $(`<div id="${review.id}" class="card"></div>`);
-    reviewElement.append($(`<p>${review.user_id}</p>`));
-    reviewElement.append($(`<p>${review.game_id}</p>`));
-    reviewElement.append($(`<p>${review.body}</p>`));
-    reviewElement.append($(`<p>${review.rating}</p>`));
-    reviewElement.append($(`<p>${review.date_created}</p>`));
-    reviewElement.append($(`<p>${review.date_updated}</p>`));
+    let game = await getGame(review.game_id);
+    let user = await getUser(review.user_id);
+    let reviewElement = $(`
+    <div id="review_${review.id}" class="card">
+        <div class="card-content">
+            <div class="media">
+                <div class="media-left">
+                    <figure class="image is-128x128">
+                        <img src="/public/img/game_thumbs/${game.thumbnail}" alt="${game.name} Thumbnail">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="subtitle">${user.first_name} ${user.last_name} reviewed:</p>
+                    <p class="title">${game.name}</p>
+                    <p class="rating"></p>
+                </div>
+            </div>
+            <div class="content">
+                ${review.text}
+            </div>
+        </div>
+    </div>`);
+    reviewElement.find(".rating").append(renderHeartCount(review.rating));
     $("#feedContent").append(reviewElement);
+}
+
+function renderHeartCount(count) {
+    let heartContainer = $('<div class="ratingContainer"></div>');
+    for(let i = 0; i < count; i++) {
+        heartContainer.append($('<img class="heartRating" src="/public/img/heart_full.png"></img>'));
+    }
+    for(let i = 0; i < 5-count; i++) {
+        heartContainer.append($('<img class="heartRating" src="/public/img/heart_empty.png"></img>'))
+    }
+    return heartContainer;
 }
 
 async function renderReviewFeed() {
     const reviews = await getReviewFeed();
+    let reviewList = [];
     for (let i = 0; i < reviews.length; i++) {
         renderReviewCard(reviews[i]);
     }
 }
 
-async function renderGameCard(game) {
-    let gameElement = $(`<div id="${game.id}" class="card"></div>`);
-    gameElement.append($(`<p>${game.id}</p>`));
-    gameElement.append($(`<p>${game.name}</p>`));
-    gameElement.append($(`<p>${game.developer}</p>`));
-    gameElement.append($(`<p>${game.platform}</p>`));
-    gameElement.append($(`<p>${game.device}</p>`));
-    gameElement.append($(`<p>${game.releaseYear}</p>`));
-    $("#feedContent").append(gameElement);
+function generateGameCard(game) {
+    let cardContainer = $(`<div id='game_${game.id}' class='card'><div class='card-content'></div></div>`);
+    let cardContent = $(cardContainer.find(".card-content")[0]);
+    let gameInfo = `<h1 class="title">${game.name}</h1><h2 class="title">`;
+    cardContent.append(content);
+    return cardContainer;
 }
 
 async function renderFullGameList() {
@@ -36,5 +61,5 @@ async function renderFullGameList() {
 }
 
 $(document).ready(() => {
-    renderFullGameList();
+    renderReviewFeed();
 });

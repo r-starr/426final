@@ -8,5 +8,4 @@ async function renderUsers()
         method: 'get',
         url: '/api/users'
     });
-    console.log(result);
 }

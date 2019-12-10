@@ -43,7 +43,7 @@ async function makeGame() {
         method: 'post',
         url: '/api/games',
         data: {
-            "name": "The Legdend of Zelda: Breath of the Wild",
+            "name": "The Legend of Zelda: Breath of the Wild",
             "developer": "Nintendo EPD",
             "platform": "NA",
             "device": "Nintendo Switch",
@@ -56,7 +56,7 @@ async function makeGame() {
         method: 'post',
         url: '/api/games',
         data: {
-            "name": "Super Smath Bros Ultimate",
+            "name": "Super Smash Bros Ultimate",
             "developer": "Nintendo Bandai Namco",
             "platform": "NA",
             "device": "Wii, Nintendo Switch",

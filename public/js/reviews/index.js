@@ -1,5 +1,4 @@
-window.onload = function () 
-{
+window.onload = function () {
     //renderReviews();
 }
 
@@ -9,5 +8,4 @@ async function renderReviews()
         method: 'get',
         url: '/api/reviews'
     });
-    console.log(result);
 }

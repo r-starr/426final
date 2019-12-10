@@ -5,13 +5,13 @@ window.onload = function (){
 async function editGame(id) {
     const result = await axios({
         method: 'put',
-        url: '/api/games/'+1,
+        url: '/api/games/'+4,
         data: {
-            "name": "Halo: Reach",
-            "developer": "Bunjie",
-            "platform": "Steam",
-            "device": "XBox, PC",
-            "releaseYear": "2001-02-02",
+            "name": "Super Smash Bros Ultimate",
+            "developer": "Nintendo Bandai Namco",
+            "platform": "NA",
+            "device": "Wii, Nintendo Switch",
+            "releaseYear": "2018",
             "thumbnail": "NA"
         },
     });

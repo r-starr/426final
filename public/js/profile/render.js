@@ -8,7 +8,7 @@ async function renderReviewCard(review) {
             <div class="media">
                 <div class="media-left">
                     <figure class="image is-128x128">
-                        <img src="/public/img/game_thumbs/${game.id}.png" alt="${game.name} Thumbnail">
+                        <img src="/public/img/game_thumbs/${game.thumbnail}" alt="${game.name} Thumbnail">
                     </figure>
                 </div>
                 <div class="media-content">

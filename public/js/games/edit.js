@@ -122,7 +122,7 @@ async function editGame(id) {
             "platform": "Steam",
             "device": "PC, Playstation, XBox",
             "releaseYear": "2016",
-            "thumbnail": "setllaris.png"
+            "thumbnail": "stellaris.png"
         },
     });
     const result10 = await axios({

@@ -2,10 +2,10 @@ window.onload = function (){
     //editGame();
 };
 
-async function editGame() {
+async function editGame(id) {
     const result = await axios({
         method: 'put',
-        url: '/api/games/'+1,
+        url: '/api/games/'+id,
         data: {
             "name": "Halo: Reach 2",
             "developer": "Bunjie 2",

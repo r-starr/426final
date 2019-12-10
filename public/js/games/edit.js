@@ -5,14 +5,14 @@ window.onload = function (){
 async function editGame(id) {
     const result = await axios({
         method: 'put',
-        url: '/api/games/'+id,
+        url: '/api/games/'+1,
         data: {
-            "name": "Halo: Reach 2",
-            "developer": "Bunjie 2",
-            "platform": "Steam 2",
-            "device": "XBox, PC 2",
+            "name": "Halo: Reach",
+            "developer": "Bunjie",
+            "platform": "Steam",
+            "device": "XBox, PC",
             "releaseYear": "2001-02-02",
-            "thumbnail": "NA 2"
+            "thumbnail": "NA"
         },
     });
 }

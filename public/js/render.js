@@ -35,7 +35,7 @@ export async function loginConfirmedUser(posUser, posPass) {
 }
 
 
-function makeaccount(event) {
+export async function makeaccount(event) {
   console.log("created an account");
   let user = document.getElementById("username").value;
   let pass = document.getElementById("password").value;

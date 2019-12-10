@@ -2,10 +2,10 @@ window.onload = function (){
     //editGame();
 };
 
-async function editGame() {
+async function editGame(id) {
     const result = await axios({
         method: 'put',
-        url: '/api/games',
+        url: '/api/games/'+id,
         data: {
             "name": "edit test game 1",
             "developer": "edit test developer 1",

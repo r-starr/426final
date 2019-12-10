@@ -8,7 +8,7 @@ async function editReview(id) {
 
     const result = await axios({
         method: 'put',
-        url: '/api/games/'+1,
+        url: '/api/reviews/'+id,
         data: {
             "user_id": "2",
             "text": "edited text",

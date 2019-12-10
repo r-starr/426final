@@ -1,11 +1,9 @@
 window.onload = function () {
-    makeReview();
+    //makeReview();
 };
 
 async function makeReview() {
-    var d = new Date();
-    let date = d.getFullYear() + '-' + (d.getMonth() +1) +  '-' + d.getDate();
-
+    //  will need to fix the user_id and game_id to make sure we're not hardcoding reviews
     const result = await axios({
         method: 'post',
         url: '/api/reviews',
@@ -14,8 +12,6 @@ async function makeReview() {
             "game_id": "4",
             "text": "one of my favorites",
             "rating": "5",
-            "date_created": date,
-            "date_updated": date
         },
     });
 }

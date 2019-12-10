@@ -5,6 +5,6 @@ window.onload = function () {
 async function deleteUser(id) {
     const result = await axios({
         method: 'delete',
-        url: '/api/users/' + id,
+        url: '/api/users/' + 1,
     });
 }

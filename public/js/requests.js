@@ -6,18 +6,26 @@ async function getReview(reviewId) {
     return reply.data;
 }
 
-async function getReviewFeed() {
-    const reply = await axios({
-        method: 'get',
-        url: "http://localhost:3000/reviews/"
-    });
-    return reply.data;
-}
-
 async function getGame(gameId) {
     const reply = await axios({
         method: 'get',
         url: `/api/games/${gameId}`
+    });
+    return reply.data;
+}
+
+async function getUser(userId) {
+    const reply = await axios({
+        method: 'get',
+        url: `/api/users/${userId}`
+    });
+    return reply.data;
+}
+
+async function getReviewFeed() {
+    const reply = await axios({
+        method: 'get',
+        url: "/api/reviews/"
     });
     return reply.data;
 }

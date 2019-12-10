@@ -3,17 +3,12 @@ window.onload = function () {
 };
 
 async function editReview(id) {
-    var d = new Date();
-    let date = d.getFullYear() + '-' + (d.getMonth() +1) +  '-' + d.getDate();
-
     const result = await axios({
         method: 'put',
-        url: '/api/games/'+1,
+        url: '/api/reviews/'+37,
         data: {
-            "user_id": "2",
-            "text": "edited text",
-            "rating": "4",
-            "date_updated": date
+            "text": "No me gusta",
+            "rating": "2"
         },
     });
 }

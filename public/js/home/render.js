@@ -1,8 +1,13 @@
+function welcome() {
+    let wCard = document.getElementById("userNameHere");
+    wCard.innerHTML = getCurrentUser().first_name + "!";
+}
+
 async function renderReviewCard(review) {
     let game = await getGame(review.game_id);
     let user = await getUser(review.user_id);
     let reviewElement = $(`
-    <div id="review_${review.id}" class="card">
+    <div id="${review.id}" class="card">
         <div class="card-content">
             <div class="media">
                 <div class="media-left">
@@ -11,7 +16,7 @@ async function renderReviewCard(review) {
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="subtitle">${user.first_name} ${user.last_name} reviewed:</p>
+                    <p class="subtitle">@${user.username} reviewed:</p>
                     <p class="title">${game.name}</p>
                     <p class="rating"></p>
                 </div>
@@ -21,7 +26,9 @@ async function renderReviewCard(review) {
             </div>
         </div>
     </div>`);
+
     reviewElement.append($(renderReviewFooter(review)));
+
     reviewElement.find(".rating").append(renderHeartCount(review.rating));
     $("#feedContent").append(reviewElement);
 }
@@ -38,18 +45,26 @@ function renderHeartCount(count) {
 }
 
 function renderReviewFooter(review) {
-    let footer = `<footer class="review-footer">
-                    <p class="review-footer-item">Reviewed on ${review.date_created}</p>
-                    <button class="review-footer-button button is-primary" href="#">Edit</button>
-                    <button class="review-footer-button button is-primary" href="#">Remove</button>
-                </footer>`
+    let footer;
+
+    if (review.user_id === getCurrentUserID()) {
+        footer = `<footer class="review-footer">
+                        <p class="review-footer-item">Reviewed on ${review.date_created}</p>
+                        <button class="review-footer-button button is-primary" href="#" id = "editReview" reviewID="${review.id}">Edit</button>
+
+                        <button class="review-footer-button button is-primary" href="#" id = "deleteReview" reviewID=${review.id}>Remove</button>
+                      </footer>`
+    } else {
+        footer = `<footer class="review-footer">
+                        <p class="review-footer-item">Reviewed on ${review.date_created}</p>
+                      </footer>`
+    }
     return footer;
 }
 
 async function renderReviewFeed() {
     const reviews = await getReviewFeed();
     for (let i = 0; i < reviews.length; i++) {
-
         renderReviewCard(reviews[i]);
     }
 }
@@ -171,19 +186,59 @@ async function onReviewSubmit(event) {
     $("#newReview").removeClass("is-active")
 }
 
-function parseJWT (token) {
-    try {
-        return JSON.parse(atob(token.split('.')[1]));
-      } catch (e) {
-        return null;
-      }
+//renders edit form
+async function renderEditForm() {
+    // console.log("element");
+    // console.log($($($(this)[0].parentNode)[0].parentNode)[0]);
+    // let id = $($($(this)[0].parentNode)[0].parentNode)[0].id;
+    // //the div has an id with "review_reviewID"
+
+    // $($($(this)[0].parentNode)[0].parentNode)[0].id = null;
+    //     $($(this)[0].parentNode)[0].innerHTML = `
+    //     <div class="control">
+    //         <textarea class="textarea is-info" id = "editTA">`+ string + `</textarea>
+    //     </div>
+
+    //         <br>
+    //         <button class = "button" id = "post_edit">Post</button>
+    //         <button class = "button" id = "cancel_edit">Cancel</button>
+    //         <br />
+    //         <br />
+    // `;
 }
 
-function getUserID () {
+//closes edit form
+async function resetEditForm() {
+}
+
+//submits edit
+async function onEditSubmit() {
+    //call render review card and replace it
+}
+
+//deletes review
+async function deleteReview() {
+}
+
+function parseJWT(token) {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+    } catch (e) {
+        return null;
+    }
+}
+
+function getCurrentUserID() {
     return parseJWT(localStorage.getItem('jwt')).id;
 }
 
+function getCurrentUser() {
+    return parseJWT(localStorage.getItem('jwt'));
+}
+
 $(document).ready(() => {
+    welcome();
+
     $("#newReviewButton").on("click", null, null, e => {
         e.preventDefault();
         $("#newReview").addClass("is-active");
@@ -196,6 +251,12 @@ $(document).ready(() => {
         resetReviewForm();
         $("#newReview").removeClass("is-active");
     });
+
+
+    // $(document).on("click", "#editReview", renderEditForm);
+    // $(document).on("click", "#submitEdit", onEditSubmit);
+    // $(document).on("click", "#cancelEdit", resetEditForm);
+    // $(document).on("click", "#deleteReview", deleteReview);
 
     $("#logout").on("click", null, null, e => {
         e.preventDefault();

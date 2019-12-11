@@ -59,8 +59,8 @@ class userController {
 
         const token = jwt.sign({
             id: id,
-            username: username,
-            password: password,
+            first_name: first_name,
+            username: username
         }, process.env.SECRET_KEY, { expiresIn: '30d' });
 
         return { jwt: token };
@@ -96,7 +96,7 @@ class userController {
             return;
         }
 
-        const user = db.prepare('SELECT id, username, password FROM users WHERE username = ?').get(username);
+        const user = db.prepare('SELECT id, first_name, username, password FROM users WHERE username = ?').get(username);
         if (!bcrypt.compare(password, user.password)) {
             return;
         }
@@ -105,8 +105,8 @@ class userController {
 
         const token = jwt.sign({
             id: user.id,
-            username: user.username,
-            password: user.password,
+            first_name: user.first_name,
+            username: user.username
         }, process.env.SECRET_KEY, { expiresIn: '30d' });
         return { jwt: token, id };
     }

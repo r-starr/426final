@@ -68,3 +68,23 @@ async function submitReview(gameId, reviewBody, rating) {
     });
     return result;
 }
+
+async function editReview(id) {
+    const result = await axios({
+        method: 'put',
+        url: '/api/reviews/'+id,
+        data: {
+            "text": "edited text",
+            "rating": "4"
+        },
+    });
+    return result;
+}
+
+async function deleteReview(id) {
+    const result = await axios({
+        method: 'delete',
+        url: '/api/review/' + id,
+    });
+    return result;
+}

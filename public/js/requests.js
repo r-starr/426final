@@ -1,5 +1,8 @@
 async function getReview(reviewId) {
     const reply = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'get',
         url: `/api/reviews/${reviewId}`
     });
@@ -8,6 +11,9 @@ async function getReview(reviewId) {
 
 async function getGame(gameId) {
     const reply = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'get',
         url: `/api/games/${gameId}`
     });
@@ -16,6 +22,9 @@ async function getGame(gameId) {
 
 async function getUser(userId) {
     const reply = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'get',
         url: `/api/users/${userId}`
     });
@@ -24,6 +33,9 @@ async function getUser(userId) {
 
 async function getReviewFeed() {
     const reply = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'get',
         url: "/api/reviews/"
     });
@@ -32,6 +44,9 @@ async function getReviewFeed() {
 
 async function getFullGameList() {
     const reply = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'get',
         url: '/api/games/'
     });

@@ -1,3 +1,7 @@
+$(document).ready(() => {
+    let jwt = localStorage.getItem('jwt');
+    renderReviewFeed();
+});
 
 async function renderReviewCard(review) {
     let game = await getGame(review.game_id);
@@ -59,7 +63,3 @@ async function renderFullGameList() {
         renderGameCard(games[i]);
     }
 }
-
-$(document).ready(() => {
-    renderReviewFeed();
-});

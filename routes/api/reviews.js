@@ -1,9 +1,11 @@
 import express from "express";
+import {authenticateUser} from "../../middlewares/auth";
 
 export const router = express.Router();
 const endpoint = '/api/reviews';
 
 var reviewC = require('../../controllers/reviewC');
+router.use(authenticateUser);
 
 //GET /api/reviews index()
 router.get('/', function (req, res) {

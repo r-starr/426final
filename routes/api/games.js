@@ -1,9 +1,11 @@
 import express from "express";
+import {authenticateUser} from "../../middlewares/auth";
 
 export const router = express.Router();
 const endpoint = '/api/games';
 
 var gameC = require('../../controllers/gameC');
+router.use(authenticateUser);
 
 //GET /api/games index()
 router.get('/', function (req, res) {

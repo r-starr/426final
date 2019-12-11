@@ -10,31 +10,59 @@
         Gamer Worlde
     </title>
 
-
+    <script src="/public/node_modules/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="public/node_modules/bulma/css/bulma.css" />
-    <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    <!--
+        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
+    -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="module" src="/public/js/login.js"></script>
 </head>
 
 <body>
-    <div id="screenBarTop"> </div>
 
-    <img visibility=hidden id="mainLogo" src="/public/img/gamerWorldeLogo.png">
+    <!--
+        <div id="screenBarTop"> </div>
+       <img visibility=hidden id="mainLogo" src="/public/img/gamerWorldeLogo.png"> 
+    -->
 
     <div class="container">
         <div id="loginForm">
-            <input class="input" type="text" name="username" id="username" placeholder="Username"><br>
-            <input class="input" type="text" name="password" id="password" placeholder="Password"><br>
-            <button class="button is-black" id="login">Login</button>
-            <button class="button is-black" id="createaccount">Create Account</button>
+
+            <div class = "field">
+                <label class = "label">Username</label>
+                <div class = "control">
+                    <input class="input" type="text" name="username" id="username" placeholder="Username">
+                </div>
+            </div>
+
+            <div class = "field">
+                <label class = "label">Password</label>
+                <div class = "control">
+                    <input class="input" type="text" name="password" id="password" placeholder="Password">
+                </div>
+            </div>
+            
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-black" id="login">Login</button>
+                </div>
+                <div class="control">
+                    <button class="button is-black" id="createAccount">Create Account</button>
+                </div>
+            </div>
         </div>
     </div>
-    </img>
+   
 
-    <div id="screenBar"> </div>
+    <!--
+         </img>
+        <div id="screenBar"> </div>
+    
+    -->
 
     <script src='public/node_modules/jquery/dist/jquery.js'></script>
     <script src="public/node_modules/axios/dist/axios.js"></script>
-    <script src="/public/js/render.js" type="module"></script>
 </body>
 
 </html>

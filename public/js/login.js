@@ -2,90 +2,132 @@
 //import {accountData}  from  '../../website/user_accounts/users.js';
 //const {publicStore} = require('../data/DataStore');
 
-$(function () {
-  $("#login").on("click", null, login);
-  $("#createaccount").on("click", null, makeAccountForm);
-});
-
-function login() {
-  console.log("logged in");
-  let user = document.getElementById("username").value;
-  let pass = document.getElementById("password").value;
-  console.log(user, pass);
-
-  if(loginConfirmedUser(posUser, posPass)) {
-    //redirect to homepage
-  }
-  //what do do when you can't login
-  alert("Unable to login. User does not exist.");
+window.onload = function () {
+  $(document).on("click", "#createAccount", renderAccountForm);
+  $(document).on("click", "#login", login);
+  $(document).on("click", "#submit", createAccount);
+  $(document).on("click", "#cancel", renderLogin);
 }
 
-export async function loginConfirmedUser(posUser, posPass) {
+export async function login() {
   const result = await axios({
-    method: 'get',
-    url: '/api/games'
+    method: 'post',
+    url: '/api/users/login',
+    data: {
+      "username": $("#username")[0].value,
+      "password": $("#password")[0].value,
+    },
+  }).then((response) => {
+    localStorage.setItem('jwt', response.data.jwt);
+    window.location.href = "/home";
   });
-  if (result.data.username.includes[posUser]) {
-    return true;
-  }
-
-  return false;
 }
 
+function renderAccountForm(event) {
+  $("#loginForm").replaceWith(`
+  <div id = createAccountForm>
+    <div class="field">
+      <label class="label">First Name</label>
+      <div class="control">
+        <input class="input" type="text" id = newFirstName placeholder="Jane">
+      </div>
+    </div>
 
+    <div class="field">
+      <label class="label">Last Name</label>
+      <div class="control">
+        <input class="input" type="text" id = "newLastName" placeholder="Smith">
+      </div>
+    </div>
 
-function makeAccountForm(event) {
-  //this is where we replace the login form with the create account form
+    <div class="field">
+      <label class="label">Email</label>
+      <div class="control">
+        <input class="input" type="text" id = "newEmail" placeholder="jane.smith@gmail.com">
+      </div>
+    </div>
 
-  //another button for "create account" to confirm
-  console.log("created an account");
-  let user = document.getElementById("username").value;
-  let pass = document.getElementById("password").value;
-  //console.log(user + " " + pass);
-  createCookie(user, pass);
+    <div class="field">
+      <label class="label">Username</label>
+      <div class="control">
+        <input class="input" type="text" id = "newUsername" placeholder="jsmith">
+      </div>
+    </div>
+  
+    <div class="field">
+      <label class="label">Password</label>
+      <div class="control">
+        <input class="input" type="text" id = "newPassword" placeholder="somethignVerySecure">
+      </div>
+    </div>
 
-  alert("You're new account was created. Welcome, to Gamer Worlde.");
+    <div class="field is-grouped">
+      <div class="control">
+        <button class="button is-link" id = "submit">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-link is-light" id = "cancel">Cancel</button>
+      </div>
+   </div>
+
+  </div>
+  `);
+
+  //first name, last name, email, username, password
+
+  // //another button for "create account" to confirm
+  // console.log("created an account");
+  // let user = document.getElementById("username").value;
+  // let pass = document.getElementById("password").value;
+  // //console.log(user + " " + pass);
+  // createCookie(user, pass);
+
+  //alert("You're new account was created. Welcome, to Gamer Worlde.");
 }
 
-function makeAccount () {
+function renderLogin () {
+  $("#createAccountForm").replaceWith(`
+  <div id="loginForm">
+
+  <div class = "field">
+      <label class = "label">Username</label>
+      <div class = "control">
+          <input class="input" type="text" name="username" id="username" placeholder="Username">
+      </div>
+  </div>
+
+  <div class = "field">
+      <label class = "label">Password</label>
+      <div class = "control">
+          <input class="input" type="text" name="password" id="password" placeholder="Password">
+      </div>
+  </div>
+  
+  <div class="field is-grouped">
+      <div class="control">
+          <button class="button is-black" id="login">Login</button>
+      </div>
+      <div class="control">
+          <button class="button is-black" id="createAccount">Create Account</button>
+      </div>
+  </div>
+</div>
+  `);
+}
+
+async function createAccount () {
   const result = await axios({
     method: 'post',
     url: '/api/users',
     data: {
-      "first_name": null,
-      "last_name": null,
-      "email": null,
-      "username": null,
-      "password": null,
+      "first_name": $("#newFirstName")[0].value,
+      "last_name": $("#newLastName")[0].value,
+      "email": $("#newEmail")[0].value,
+      "username": $("#newUsername")[0].value,
+      "password": $("#newPassword")[0].value,
     },
-  }).then(() => {
-    $message.html('<span class="has-text-success">Success! Account created.</span>');
-  }).catch(() => {
-    $message.html('<span class="has-text-danger">Something went wrong :/.</span>');
+  }).then((response) => {
+    localStorage.setItem('jwt', response.data.jwt);
+    window.location.href = "/home";
   });
 }
-
-
-function createCookie(user, pass) {
-  // special characters (spaces), need encoding
-  let name = user;
-  let value = pass;
-  // encodes the cookie as my%20name=John%20Smith
-  document.cookie = encodeURIComponent(name) + '-' + encodeURIComponent(value);
-  //alert(document.cookie);
-}
-
-
-// function createCookie(user, pass) {
-//   // special characters (spaces), need encoding
-//   let name = user;
-//   let value = pass;
-//   // encodes the cookie as my%20name=John%20Smith
-//   document.cookie = encodeURIComponent(name) + '-' + encodeURIComponent(value);
-//   alert(document.cookie);
-// }
-
-// function controlMusic() {
-//   let music = document.getElementById("music");
-//   music.volume = 0.0;
-// }

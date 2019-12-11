@@ -1,6 +1,5 @@
 import express from "express";
 import path from "path";
-import fs from "fs";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import debug from 'debug';

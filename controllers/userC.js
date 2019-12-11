@@ -37,11 +37,17 @@ class userController {
         let username = body.username;
         let password = body.password;
 
-        let exists = db.prepare('SELECT COUNT(1) FROM users WHERE email = ? OR username = ?').get(email, username);
-        // Check if user exists in DB via email
-        if (!exists) {
-            return;
-        }
+        let existsE = db.prepare('SELECT COUNT() FROM users WHERE email = ?').get(email);
+        let existsU = db.prepare('SELECT COUNT() FROM users WHERE email = ?').get(username);
+
+        // console.log("existsE: " + existsE);
+        // console.log("existsU: " + existsU);
+        
+        // Check if user exists in DB via email (THIS DOESNT ACTUALLY DO ANYTHING)
+        // if (exists > 0) {
+        //     console.log("in loop to repvent new accounts");
+        //     return;
+        // }
 
         // Hash the user's password
         bcrypt.hash(password, 10, (err, hash) => {
@@ -57,7 +63,7 @@ class userController {
             password: password,
         }, process.env.SECRET_KEY, { expiresIn: '30d' });
 
-        return {jwt: token};
+        return { jwt: token };
     }
 
     static update(body, params) {
@@ -95,13 +101,14 @@ class userController {
             return;
         }
 
+        const id = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
+
         const token = jwt.sign({
             id: user.id,
             username: user.username,
             password: user.password,
         }, process.env.SECRET_KEY, { expiresIn: '30d' });
-
-        return {jwt: token};
+        return { jwt: token, id };
     }
 
     destroyTable() {

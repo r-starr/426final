@@ -18,6 +18,7 @@ router.get('/', authenticateUser, function (req, res) {
 //GET /api/users index()
 router.post('/login', function (req, res) {
     res.send(userC.login(req.body));
+    console.log(userC.getID());
 });
 
 //GET /api/users/:review_id show()

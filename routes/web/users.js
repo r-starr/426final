@@ -13,7 +13,7 @@ router.get('/create', function (req, res) {
     res.render('users/create'); //!URL, goes to "views" folder and picks an html doc
 });
 
-//GET /games/edit --> renders edit.html (inview)
+//GET /users/edit --> renders edit.html (inview)
 router.get('/edit', function (req, res) {
     res.render('users/edit'); //!URL, goes to "views" folder and picks an html doc
 });

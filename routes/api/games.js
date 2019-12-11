@@ -1,5 +1,5 @@
 import express from "express";
-import {authenticateUser} from "../../middlewares/auth";
+import { authenticateUser } from "../../middlewares/auth";
 
 export const router = express.Router();
 const endpoint = '/api/games';
@@ -12,7 +12,7 @@ router.get('/', function (req, res) {
     //let gc = new gameC();
     //res.json(gc.index());
     //res.json(gc.destroyTable());
-    
+
     res.json(gameC.index());
 });
 

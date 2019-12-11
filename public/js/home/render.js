@@ -1,3 +1,29 @@
+
+/*function angsearch() {
+    const algoliasearch = require('/public/node_modules/algoliasearch/lite.js');
+    const instantsearch = require('/public/node_modules/instantsearch.js').default;
+
+    const search = instantsearch({
+        appId: "I5UBGGYBBY",
+        apiKey: "27a8eba63dfa2290c9e22e5dc680a37c",
+        indexName: "games",
+        searchParameters: {
+          hitsPerPage: 20,
+          attributesToSnippet: ["content:14"],
+          snippetEllipsisText: " [...]"
+        }
+      });
+
+    search.addWidget(
+        instantsearch.widgets.searchBox({
+          container: "#searchbox",
+          placeholder: "Search games",
+          autofocus: false
+        })
+      );
+
+    search.start();
+}*/
 async function renderReviewCard(review) {
     let game = await getGame(review.game_id);
     let user = await getUser(review.user_id);
@@ -113,7 +139,7 @@ async function resetReviewForm() {
     $("#gameSelect > select").on("change", null, null, renderReviewForm);
 }
 
-async function onReviewSubmit(event) {    
+async function onReviewSubmit(event) {
     let gameId = $($("#gameSelect option:selected")[0]).attr("value");
     let reviewBody = $("#reviewBody").val();
     let rating = $("#ratingSlider").val();
@@ -186,4 +212,6 @@ $(document).ready(() => {
     populateGameOptions();
 
     renderReviewFeed();
+
+    //angsearch();
 });

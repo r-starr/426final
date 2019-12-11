@@ -1,6 +1,10 @@
 var db = require('better-sqlite3')('./database.db');
 
-class gameController {
+const algoliasearch = require('algoliasearch');
+const client = algoliasearch('I5UBGGYBBY', '37c61a03f49460ca5d42260e68c5b214');
+const index = client.initIndex('games');
+
+class gameController { 
     constructor() {
         db.exec(`CREATE TABLE IF NOT EXISTS games (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -12,8 +16,6 @@ class gameController {
             thumbnail VARCHAR(255)
             )`
         );
-
-        //db.exec('INSERT INTO reviews (name, develpoer, platform, device, releaseYear, thumbnail) VALUES ("testName", "testDeveloper", "testPlatform", "testDevice", 2000-03-23, "testPicture")');
     }
 
     static index() {
@@ -34,7 +36,21 @@ class gameController {
         let releaseYear = body.releaseYear;
         let thumbnail = body.thumbnail;
 
-        db.prepare('INSERT INTO games (name, developer, platform, device, releaseYear, thumbnail) VALUES (?, ?, ?, ?, ?, ?)').run(name, developer, platform, device, releaseYear, thumbnail);    
+        let test = db.prepare('INSERT INTO games (name, developer, platform, device, releaseYear, thumbnail) VALUES (?, ?, ?, ?, ?, ?)').run(name, developer, platform, device, releaseYear, thumbnail);
+
+        const id = db.prepare('SELECT id FROM games WHERE name = ?').get(name);
+
+        index.addObject({
+            objectID: id,
+            name: name,
+            developer: developer,
+            platform: platform,
+            device: device,
+            releaseYear: releaseYear,
+        }, (err, { objectID } = {}) => {
+            console.log(`objectID=${objectID}`);
+        });
+
     }
 
     static update(body, params) {
@@ -47,13 +63,27 @@ class gameController {
         let thumbnail = body.thumbnail;
 
         db.prepare('UPDATE games SET name = ?, developer = ?, platform = ?, device = ?, releaseYear = ?, thumbnail = ? WHERE id = ?').run(name, developer, platform, device, releaseYear, thumbnail, id);
+
+        const object = [{
+            name: name,
+            developer: developer,
+            platform: platform,
+            device: device,
+            releaseYear: releaseYear,
+            thumbnail: thumbnail,
+        }];
+
+        index.partialUpdateObjects(object, (err, content) => {
+            if (err) throw err;
+            console.log(content);
+        });
     }
 
     static destroy(params) {
         db.prepare('DELETE FROM games WHERE id = ?').run(params['game_id']);
     }
 
-    destroyTable () {
+    destroyTable() {
         db.exec('DROP TABLE games');
     }
 }

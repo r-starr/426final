@@ -4,6 +4,10 @@
 
 <head>
     <title>gamerworlde</title>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+        integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/node_modules/bulma/css/bulma.css">
     <link rel="stylesheet" href="/public/css/home.css">
 </head>
@@ -21,10 +25,16 @@
                     Home
                 </a>
             </div>
+
             <div class="navbar-end">
                 <div class="navbar-item">
+                    <div class="ais-InstantSearch">
+                        <div id="searchbox"></div>
+                    </div>
+                </div>
+                <div class="navbar-item">
                     <div class="buttons">
-                        <a class="button is-primary" id = "logout">
+                        <a class="button is-primary" id="logout">
                             <strong>Log out</strong>
                         </a>
                     </div>
@@ -41,11 +51,12 @@
                             <div class="media">
                                 <div class="media-left">
                                     <figure class="image is-96x96">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                            alt="Placeholder image">
                                     </figure>
                                 </div>
-                                <div class="media-content" id = "userCard">
-                                    Welcome<p id = "userNameHere"></p>
+                                <div class="media-content" id="userCard">
+                                    Welcome<p id="userNameHere"></p>
                                 </div>
                             </div>
                         </div>
@@ -55,10 +66,10 @@
                         </footer>
                     </div>
                 </div>
-                <div id="feedContent" class="column">
-                </div>
+
+                    <div id="feedContent" class="column"></div>
+                
             </div>
-        </div>
     </section>
     <div id="newReview" class="modal">
         <div class="modal-background"></div>
@@ -85,10 +96,57 @@
             </footer>
         </div>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.35.1/dist/algoliasearchLite.min.js"
+        integrity="sha256-5rOQwvvJdM9oDYQYCGzaJuuTy6SUALjma3OtzEGyJM0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"
+        integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
+
     <script src="/public/node_modules/axios/dist/axios.js"></script>
     <script src="/public/js/requests.js"></script>
     <script src="/public/js/home/render.js"></script>
+    <script>
+
+        const searchClient = algoliasearch('I5UBGGYBBY', '27a8eba63dfa2290c9e22e5dc680a37c');
+
+        const search = instantsearch({
+            indexName: 'games',
+            searchClient,
+        });
+
+        search.addWidgets([
+            instantsearch.widgets.searchBox({
+                container: '#searchbox',
+                placeholder: "Search games here!",
+                autofocus: true,
+            })
+        ]);
+
+        search.start();
+
+    </script>
+
 </body>
 
 </html>
+
+
+    <!-- ,
+    instantsearch.widgets.hits({
+        container: '#hits',
+        templates: {
+            item: `
+            <div>
+                <img src="{{image}}" align="left" alt="{{name}}" />
+                <div class="hit-name">
+                {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
+            </div>
+            <div class="hit-description">
+                {{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
+            </div>
+            <div class="hit-price">\${{price}}</div>
+            </div>
+            `,
+        }
+    }) -->

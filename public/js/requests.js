@@ -83,8 +83,11 @@ async function editReview(id) {
 
 async function deleteReview(id) {
     const result = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'delete',
-        url: '/api/review/' + id,
+        url: '/api/reviews/' + id,
     });
     return result;
 }

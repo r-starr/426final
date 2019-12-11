@@ -8,6 +8,7 @@
     "prod": "cross-env DEBUG=server node -r esm bin/server.js"
   },
   "dependencies": {
+    "algoliasearch": "^3.35.1",
     "axios": "^0.19.0",
     "bcrypt": "^3.0.6",
     "better-sqlite3": "^5.4.3",

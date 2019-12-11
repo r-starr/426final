@@ -16,14 +16,14 @@ router.get('/', function (req, res) {
     res.json(reviewC.index());
 });
 
-//GET /api/games/:review_id show()
+//GET /api/reviews/:review_id show()
 router.get('/:review_id', function (req, res) {
     res.json(reviewC.show(req.params));
 });
 
 // POST /api/reviews store()
 router.post('/', function (req, res) {
-    res.json(reviewC.store(req.body));
+    res.json(reviewC.store(req.body, req.user.id));
 });
 
 //PUT /api/reviews/:review_id update()

@@ -49,20 +49,15 @@ class userController {
             let result = db.prepare('INSERT INTO users (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)').run(first_name, last_name, email, username, hash);
         });
 
+        const id = db.prepare('SELECT id FROM users WHERE username = ?').get(username);
+
         const token = jwt.sign({
-            name: username,
-            data: {
-                username: username,
-                password: password
-            },
+            id: id,
+            username: username,
+            password: password,
         }, process.env.SECRET_KEY, { expiresIn: '30d' });
 
-        return {
-            jwt: token, data: {
-                username: username,
-                password: password
-            }, name: username
-        };
+        return {jwt: token};
     }
 
     static update(body, params) {
@@ -95,19 +90,18 @@ class userController {
             return;
         }
 
-        const user = db.prepare('SELECT username, password FROM users WHERE username = ?').get(username);
+        const user = db.prepare('SELECT id, username, password FROM users WHERE username = ?').get(username);
         if (!bcrypt.compare(password, user.password)) {
             return;
         }
 
         const token = jwt.sign({
-            name: username,
-            data: user,
+            id: user.id,
+            username: user.username,
+            password: user.password,
         }, process.env.SECRET_KEY, { expiresIn: '30d' });
 
-        console.log(user);
-
-        return { jwt: token, data: user, name: user.username };
+        return {jwt: token};
     }
 
     destroyTable() {

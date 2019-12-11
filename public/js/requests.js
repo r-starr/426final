@@ -53,12 +53,14 @@ async function getFullGameList() {
     return reply.data;
 }
 
-async function submitReview(userId, gameId, reviewBody, rating) {
+async function submitReview(gameId, reviewBody, rating) {
     const result = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'post',
         url: '/api/reviews',
         data: {
-            "user_id": userId,
             "game_id": gameId,
             "text": reviewBody,
             "rating": rating

@@ -113,15 +113,14 @@ async function resetReviewForm() {
     $("#gameSelect > select").on("change", null, null, renderReviewForm);
 }
 
-async function onReviewSubmit(event) {
-    //USER IS HARDCODED UNTIL WE FIGURE THAT OUT
-    let userId = 1;
+async function onReviewSubmit(event) {    
     let gameId = $($("#gameSelect option:selected")[0]).attr("value");
     let reviewBody = $("#reviewBody").val();
     let rating = $("#ratingSlider").val();
     let success = true;
     try {
-        await submitReview(userId, gameId, reviewBody, rating);
+        await submitReview(gameId, reviewBody, rating);
+        location.reload();
     } catch (error) {
         success = false;
     }
@@ -176,8 +175,13 @@ $(document).ready(() => {
         $("#newReview").removeClass("is-active");
     });
 
-    $("#gameSelect > select").on("change", null, null, renderReviewForm);
+    $("#logout").on("click", null, null, e => {
+        e.preventDefault();
+        localStorage.removeItem('jwt');
+        window.location.href = "/";
+    });
 
+    $("#gameSelect > select").on("change", null, null, renderReviewForm);
 
     populateGameOptions();
 

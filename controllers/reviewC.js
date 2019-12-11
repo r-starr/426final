@@ -17,7 +17,7 @@ class reviewController {
     }
 
     static index() {
-        let result = db.prepare('SELECT * FROM reviews').all();
+        let result = db.prepare('SELECT * FROM reviews ORDER BY id DESC').all();
         return result;
     }
 
@@ -26,8 +26,7 @@ class reviewController {
         return result;
     }
 
-    static store(body) {
-        let user_id = body.user_id;
+    static store(body, user_id) {
         let game_id = body.game_id;
         let text = body.text;
         let rating = body.rating;

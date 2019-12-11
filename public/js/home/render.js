@@ -1,29 +1,3 @@
-
-/*function angsearch() {
-    const algoliasearch = require('/public/node_modules/algoliasearch/lite.js');
-    const instantsearch = require('/public/node_modules/instantsearch.js').default;
-
-    const search = instantsearch({
-        appId: "I5UBGGYBBY",
-        apiKey: "27a8eba63dfa2290c9e22e5dc680a37c",
-        indexName: "games",
-        searchParameters: {
-          hitsPerPage: 20,
-          attributesToSnippet: ["content:14"],
-          snippetEllipsisText: " [...]"
-        }
-      });
-
-    search.addWidget(
-        instantsearch.widgets.searchBox({
-          container: "#searchbox",
-          placeholder: "Search games",
-          autofocus: false
-        })
-      );
-
-    search.start();
-}*/
 async function renderReviewCard(review) {
     let game = await getGame(review.game_id);
     let user = await getUser(review.user_id);
@@ -65,7 +39,7 @@ function renderHeartCount(count) {
 
 function renderReviewFooter(review) {
     let footer = `<footer class="review-footer">
-                    <p class="review-footer-item">Review created on ${review.date_created}</p>
+                    <p class="review-footer-item">Reviewed on ${review.date_created}</p>
                     <button class="review-footer-button button is-primary" href="#">Edit</button>
                     <button class="review-footer-button button is-primary" href="#">Remove</button>
                 </footer>`
@@ -74,8 +48,8 @@ function renderReviewFooter(review) {
 
 async function renderReviewFeed() {
     const reviews = await getReviewFeed();
-    let reviewList = [];
     for (let i = 0; i < reviews.length; i++) {
+
         renderReviewCard(reviews[i]);
     }
 }
@@ -194,7 +168,19 @@ async function onReviewSubmit(event) {
         });
     }
     resetReviewForm();
-    $("#newReview").removeClass("is-active");
+    $("#newReview").removeClass("is-active")
+}
+
+function parseJWT (token) {
+    try {
+        return JSON.parse(atob(token.split('.')[1]));
+      } catch (e) {
+        return null;
+      }
+}
+
+function getUserID () {
+    return parseJWT(localStorage.getItem('jwt')).id;
 }
 
 $(document).ready(() => {
@@ -222,6 +208,4 @@ $(document).ready(() => {
     populateGameOptions();
 
     renderReviewFeed();
-
-    //angsearch();
 });

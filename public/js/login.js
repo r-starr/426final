@@ -20,7 +20,10 @@ export async function login() {
   }).then((response) => {
     localStorage.setItem('jwt', response.data.jwt);
     window.location.href = "/home";
-  });
+  }).catch(() => {
+    window.alert("Failed to login!");
+  }
+  );
 }
 
 function renderAccountForm(event) {
@@ -57,7 +60,7 @@ function renderAccountForm(event) {
     <div class="field">
       <label class="label">Password</label>
       <div class="control">
-        <input class="input" type="text" id = "newPassword" placeholder="somethignVerySecure">
+        <input class="input" type="password" id = "newPassword" placeholder="somethignVerySecure">
       </div>
     </div>
 
@@ -85,7 +88,7 @@ function renderAccountForm(event) {
   //alert("You're new account was created. Welcome, to Gamer Worlde.");
 }
 
-function renderLogin () {
+function renderLogin() {
   $("#createAccountForm").replaceWith(`
   <div id="loginForm">
 
@@ -115,7 +118,7 @@ function renderLogin () {
   `);
 }
 
-async function createAccount () {
+async function createAccount() {
   const result = await axios({
     method: 'post',
     url: '/api/users',

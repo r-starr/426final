@@ -188,23 +188,7 @@ async function onReviewSubmit(event) {
 
 //renders edit form
 async function renderEditForm() {
-    // console.log("element");
-    // console.log($($($(this)[0].parentNode)[0].parentNode)[0]);
-    // let id = $($($(this)[0].parentNode)[0].parentNode)[0].id;
-    // //the div has an id with "review_reviewID"
-
-    // $($($(this)[0].parentNode)[0].parentNode)[0].id = null;
-    //     $($(this)[0].parentNode)[0].innerHTML = `
-    //     <div class="control">
-    //         <textarea class="textarea is-info" id = "editTA">`+ string + `</textarea>
-    //     </div>
-
-    //         <br>
-    //         <button class = "button" id = "post_edit">Post</button>
-    //         <button class = "button" id = "cancel_edit">Cancel</button>
-    //         <br />
-    //         <br />
-    // `;
+    console.log("element");
 }
 
 //closes edit form
@@ -251,12 +235,6 @@ $(document).ready(() => {
         resetReviewForm();
         $("#newReview").removeClass("is-active");
     });
-
-
-    // $(document).on("click", "#editReview", renderEditForm);
-    // $(document).on("click", "#submitEdit", onEditSubmit);
-    // $(document).on("click", "#cancelEdit", resetEditForm);
-    // $(document).on("click", "#deleteReview", deleteReview);
 
     $("#logout").on("click", null, null, e => {
         e.preventDefault();

@@ -27,7 +27,7 @@ async function renderReviewCard(review) {
         </div>
     </div>`);
 
-    reviewElement.append($(renderReviewFooter(review)));
+    reviewElement.append(renderReviewFooter(review));
 
     reviewElement.find(".rating").append(renderHeartCount(review.rating));
     $("#feedContent").append(reviewElement);
@@ -45,19 +45,16 @@ function renderHeartCount(count) {
 }
 
 function renderReviewFooter(review) {
-    let footer;
+    let footer= $(`<footer class="review-footer">
+    <p class="review-footer-item">Reviewed on ${review.date_created}</p>
+  </footer>`);
 
     if (review.user_id === getCurrentUserID()) {
-        footer = `<footer class="review-footer">
-                        <p class="review-footer-item">Reviewed on ${review.date_created}</p>
-                        <button class="review-footer-button button is-primary" href="#" id = "editReview" reviewID="${review.id}">Edit</button>
-
-                        <button class="review-footer-button button is-primary" href="#" id = "deleteReview" reviewID=${review.id}>Remove</button>
-                      </footer>`
-    } else {
-        footer = `<footer class="review-footer">
-                        <p class="review-footer-item">Reviewed on ${review.date_created}</p>
-                      </footer>`
+        let editButton = $(`<button class="review-footer-button button is-primary" reviewID="${review.id}">Edit</button>`);
+        editButton.on("click", null, null, editReview);
+        let deleteButton = $(`<button class="review-footer-button button is-primary" reviewID=${review.id}>Remove</button>`);
+        deleteButton.on("click", null, null, removeReview);
+        footer.append(editButton, deleteButton);
     }
     return footer;
 }
@@ -69,13 +66,6 @@ async function renderReviewFeed() {
     }
 }
 
-function generateGameCard(game) {
-    let cardContainer = $(`<div id='game_${game.id}' class='card'><div class='card-content'></div></div>`);
-    let cardContent = $(cardContainer.find(".card-content")[0]);
-    let gameInfo = `<h1 class="title">${game.name}</h1><h2 class="title">`;
-    cardContent.append(content);
-    return cardContainer;
-}
 
 async function renderFullGameList() {
     let games = await getFullGameList();
@@ -217,7 +207,16 @@ async function onEditSubmit() {
 }
 
 //deletes review
-async function deleteReview() {
+async function removeReview(event) {
+    let id = $(event.target).attr("reviewID");
+    console.log(id);
+    console.log(await deleteReview(id));
+    $(`#${id}`).remove();
+}
+
+//edits review
+async function editReview(event) {
+
 }
 
 function parseJWT(token) {
@@ -252,21 +251,17 @@ $(document).ready(() => {
         $("#newReview").removeClass("is-active");
     });
 
-
     // $(document).on("click", "#editReview", renderEditForm);
     // $(document).on("click", "#submitEdit", onEditSubmit);
     // $(document).on("click", "#cancelEdit", resetEditForm);
     // $(document).on("click", "#deleteReview", deleteReview);
-
     $("#logout").on("click", null, null, e => {
         e.preventDefault();
         localStorage.removeItem('jwt');
         window.location.href = "/";
     });
-
     $("#gameSelect > select").on("change", null, null, renderReviewForm);
-
     populateGameOptions();
-
     renderReviewFeed();
+
 });

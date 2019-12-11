@@ -47,6 +47,7 @@ async function renderReviewCard(review) {
             </div>
         </div>
     </div>`);
+    reviewElement.append($(renderReviewFooter(review)));
     reviewElement.find(".rating").append(renderHeartCount(review.rating));
     $("#feedContent").append(reviewElement);
 }
@@ -60,6 +61,15 @@ function renderHeartCount(count) {
         heartContainer.append($('<img class="heartRating" src="/public/img/heart_empty.png"></img>'))
     }
     return heartContainer;
+}
+
+function renderReviewFooter(review) {
+    let footer = `<footer class="review-footer">
+                    <p class="review-footer-item">Review created on ${review.date_created}</p>
+                    <button class="review-footer-button button is-primary" href="#">Edit</button>
+                    <button class="review-footer-button button is-primary" href="#">Remove</button>
+                </footer>`
+    return footer;
 }
 
 async function renderReviewFeed() {

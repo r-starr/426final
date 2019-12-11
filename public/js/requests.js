@@ -52,3 +52,17 @@ async function getFullGameList() {
     });
     return reply.data;
 }
+
+async function submitReview(userId, gameId, reviewBody, rating) {
+    const result = await axios({
+        method: 'post',
+        url: '/api/reviews',
+        data: {
+            "user_id": userId,
+            "game_id": gameId,
+            "text": reviewBody,
+            "rating": rating
+        },
+    });
+    return result;
+}

@@ -27,52 +27,57 @@ export async function login() {
 }
 
 function renderAccountForm(event) {
-  $("#loginForm").replaceWith(`
-  <div id = createAccountForm>
+  $("#section").empty();
+  $("#section").append(`
+  <div class="container">
+  <div class="card">
+  <div class="card-content">
     <div class="field">
       <label class="label">First Name</label>
       <div class="control">
-        <input class="input" type="text" id = newFirstName placeholder="Jane">
+        <input class="input is-hovered" type="text" id = newFirstName placeholder="Jane">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Last Name</label>
       <div class="control">
-        <input class="input" type="text" id = "newLastName" placeholder="Smith">
+        <input class="input is-hovered" type="text" id = "newLastName" placeholder="Smith">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Email</label>
       <div class="control">
-        <input class="input" type="text" id = "newEmail" placeholder="jane.smith@gmail.com">
+        <input class="input is-hovered" type="text" id = "newEmail" placeholder="jane.smith@gmail.com">
       </div>
     </div>
 
     <div class="field">
       <label class="label">Username</label>
       <div class="control">
-        <input class="input" type="text" id = "newUsername" placeholder="jsmith">
+        <input class="input is-hovered" type="text" id = "newUsername" placeholder="jsmith">
       </div>
     </div>
   
     <div class="field">
       <label class="label">Password</label>
       <div class="control">
-        <input class="input" type="password" id = "newPassword" placeholder="somethignVerySecure">
+        <input class="input is-hovered" type="password" id = "newPassword" placeholder="somethingVerySecure">
       </div>
     </div>
 
     <div class="field is-grouped">
       <div class="control">
-        <button class="button is-link" id = "submit">Submit</button>
+        <button class="button is-primary" id="submit">Submit</button>
       </div>
       <div class="control">
-        <button class="button is-link is-light" id = "cancel">Cancel</button>
+        <button class="button is-primary is-light" id="cancel">Cancel</button>
       </div>
    </div>
 
+   </div>
+  </div>
   </div>
   `);
 
@@ -89,32 +94,35 @@ function renderAccountForm(event) {
 }
 
 function renderLogin() {
-  $("#createAccountForm").replaceWith(`
-  <div id="loginForm">
+  $("#section").empty();
+  $("#section").append(`
+    <div class="container">
+        <div class="card">
+            <div class="card-content">
+            <div class = "field">
+                <label class = "label">Username</label>
+                <div class = "control">
+                    <input class="input is-hovered" type="text" name="username" id="username" placeholder="Username">
+                </div>
+            </div>
 
-  <div class = "field">
-      <label class = "label">Username</label>
-      <div class = "control">
-          <input class="input" type="text" name="username" id="username" placeholder="Username">
-      </div>
-  </div>
-
-  <div class = "field">
-      <label class = "label">Password</label>
-      <div class = "control">
-          <input class="input" type="text" name="password" id="password" placeholder="Password">
-      </div>
-  </div>
-  
-  <div class="field is-grouped">
-      <div class="control">
-          <button class="button is-black" id="login">Login</button>
-      </div>
-      <div class="control">
-          <button class="button is-black" id="createAccount">Create Account</button>
-      </div>
-  </div>
-</div>
+            <div class = "field">
+                <label class = "label">Password</label>
+                <div class = "control">
+                    <input class="input is-hovered" type="password" name="password" id="password" placeholder="Password">
+                </div>
+            </div>
+            
+            <div class="field is-grouped">
+                <div class="control">
+                    <button class="button is-primary" id="login">Login</button>
+                </div>
+                <div class="control">
+                    <button class="button is-primary is-light" id="createAccount">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
   `);
 }
 

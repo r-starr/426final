@@ -69,13 +69,16 @@ async function submitReview(gameId, reviewBody, rating) {
     return result;
 }
 
-async function editReview(id) {
+async function editReview(id, rating, text) {
     const result = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
         method: 'put',
         url: '/api/reviews/'+id,
         data: {
-            "text": "edited text",
-            "rating": "4"
+            "text": text,
+            "rating": rating
         },
     });
     return result;

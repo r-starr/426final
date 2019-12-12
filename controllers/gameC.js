@@ -20,6 +20,13 @@ class gameController {
 
     static index() {
         let result = db.prepare('SELECT * FROM games').all();
+        /*index.clearIndex((err, content) => {
+            console.log(content);
+        });*/
+        //console.log(result);
+        /*index.addObjects(result, (err, content) => {
+            console.log(content);
+        });*/
         return result;
     }
 
@@ -41,7 +48,7 @@ class gameController {
         const id = db.prepare('SELECT id FROM games WHERE name = ?').get(name);
 
         index.addObject({
-            objectID: id,
+            id: id,
             name: name,
             developer: developer,
             platform: platform,
@@ -65,6 +72,7 @@ class gameController {
         db.prepare('UPDATE games SET name = ?, developer = ?, platform = ?, device = ?, releaseYear = ?, thumbnail = ? WHERE id = ?').run(name, developer, platform, device, releaseYear, thumbnail, id);
 
         const object = [{
+            id: id,
             name: name,
             developer: developer,
             platform: platform,

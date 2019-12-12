@@ -35,3 +35,8 @@ router.put('/:review_id', function (req, res) {
 router.delete('/:review_id', function (req, res) {
     res.json(reviewC.destroy(req.params));
 });
+
+//GET /api/reviews/game/:game_id getGames()
+router.get('/game/:game_id', function (req, res) {
+    res.json(reviewC.getGames(req.params));
+});

@@ -94,3 +94,14 @@ async function deleteReview(id) {
     });
     return result;
 }
+
+async function getRewiewsWithGame(id) {
+    const result = await axios({
+        headers: {
+            "Authorization": "Bearer " + localStorage.getItem('jwt'),
+          },
+        method: 'get',
+        url: '/api/reviews/game/' + id,
+    });
+    return result;
+}

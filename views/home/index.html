@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="/public/css/mystyles.css">
     <link rel="stylesheet" href="/public/css/home.css">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css"
+        integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
         integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
-        
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.1.0/themes/algolia.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/selectize@0.12.6/dist/css/selectize.css">
+
 </head>
 
 <body>
@@ -24,18 +27,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <div class="container">
-
-
-                        <div class="ais-InstantSearch">
-                            <h1>InstantSearch.js</h1>
-
-                            <div class="right-panel">
-                                <div id="searchbox"></div>
-                                <div id="hits"></div>
-                                <div id="pagination"></div>
-                            </div>
-                        </div>
-
+                        <div id="autocomplete"></div>
                     </div>
                 </div>
             </div>
@@ -126,12 +118,14 @@
     <script src="/public/js/requests.js"></script>
     <script src="/public/js/home/render.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearch.min.js"></script>
+
+    <script src="/public/js/home/algolia.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.35.1/dist/algoliasearchLite.min.js"
         integrity="sha256-5rOQwvvJdM9oDYQYCGzaJuuTy6SUALjma3OtzEGyJM0=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"
         integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
-    <script src="/public/js/home/algolia.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/selectize@0.12.6/dist/js/standalone/selectize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@^4.0.0"></script>
 
 </body>
 

@@ -58,3 +58,7 @@ body {
 a:hover {
     color: #ffffff;
 }
+
+#autocomplete {
+    width: 350px;
+}

@@ -69,5 +69,11 @@ class reviewController {
             console.log(content);
         });
     }
+
+    static getGames (params) {
+        let result = db.prepare('SELECT * FROM reviews WHERE game_id = ?').all(params['game_id']);
+        console.log(result);
+        return result;
+    }
 }
 module.exports = reviewController;

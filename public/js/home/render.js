@@ -3,6 +3,10 @@ function welcome() {
     wCard.innerHTML = getCurrentUser().first_name + "!";
 }
 
+function clearReviewCards() {
+    $('#feedContent').empty();
+}
+
 async function renderReviewCard(review) {
     let game = await getGame(review.game_id);
     let user = await getUser(review.user_id);
@@ -57,21 +61,6 @@ function renderReviewFooter(review) {
         footer.append(editButton, deleteButton);
     }
     return footer;
-}
-
-async function renderReviewFeed() {
-    const reviews = await getReviewFeed();
-    for (let i = 0; i < reviews.length; i++) {
-        renderReviewCard(reviews[i]);
-    }
-}
-
-
-async function renderFullGameList() {
-    let games = await getFullGameList();
-    for (let i = 0; i < games.length; i++) {
-        renderGameCard(games[i]);
-    }
 }
 
 async function populateGameOptions() {
@@ -299,10 +288,6 @@ $(document).ready(() => {
         $("#editForm").removeClass("is-active");
     });
 
-    // $(document).on("click", "#editReview", renderEditForm);
-    // $(document).on("click", "#submitEdit", onEditSubmit);
-    // $(document).on("click", "#cancelEdit", resetEditForm);
-    // $(document).on("click", "#deleteReview", deleteReview);
     $("#logout").on("click", null, null, e => {
         e.preventDefault();
         localStorage.removeItem('jwt');
@@ -316,6 +301,5 @@ $(document).ready(() => {
 
     $("#gameSelect > select").on("change", null, null, renderReviewForm);
     populateGameOptions();
-    renderReviewFeed();
 
 });

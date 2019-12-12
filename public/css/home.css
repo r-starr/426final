@@ -54,3 +54,7 @@ body {
     position: fixed;
     margin-top: 400px;
 }
+
+a:hover {
+    color: #ffffff;
+}

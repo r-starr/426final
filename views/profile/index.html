@@ -62,31 +62,22 @@
                 <div id="feedContent" class="column"></div>
             </div>
     </section>
-    <div id="newReview" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title">Add a new review</p>
-            </header>
-            <section class="modal-card-body">
-                <form id="newReviewForm">
-                    <div class="field">
-                        <div class="control">
-                            <div id="gameSelect" class="select">
-                                <select>
-                                    <option value="default">Select a game to review</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </section>
-            <footer class="modal-card-foot">
-                <button id="submitReview" class="button is-success">Submit</button>
-                <button id="cancelReview" class="button">Cancel</button>
-            </footer>
+    <div id="editForm" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p class="modal-card-title">Edit your review</p>
+                </header>
+                <section class="modal-card-body">
+                    <form id="newEditForm">
+                    </form>
+                </section>
+                <footer class="modal-card-foot">
+                    <button id="submitEdit" class="button is-success">Submit</button>
+                    <button id="cancelEdit" class="button">Cancel</button>
+                </footer>
+            </div>
         </div>
-    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/node_modules/axios/dist/axios.js"></script>

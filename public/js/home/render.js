@@ -138,7 +138,6 @@ async function onReviewSubmit(event) {
     } catch (error) {
         success = false;
     }
-    console.log(`Game: ${gameId}, Review: ${reviewBody}, Rating: ${rating}`);
 
     let successMessage = `<article id="reviewEditSuccess" class="message is-success">
                             <div class="message-header">
@@ -177,7 +176,6 @@ async function onReviewSubmit(event) {
 
 //renders edit form
 async function renderEditForm(event) {
-    console.log("you madeit buddy");
     let review = event.data;
     event.preventDefault();
     $("#editForm").addClass("is-active");

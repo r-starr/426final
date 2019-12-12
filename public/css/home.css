@@ -49,3 +49,12 @@ body {
     width: 250px;
     position: fixed;
 }
+
+.message {
+    position: fixed;
+    margin-top: 400px;
+}
+
+a:hover {
+    color: #ffffff;
+}

@@ -5,18 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" type="image/x-icon" href="/public/img/Cowboy-icon.ico" />
     <title>
-        Gamer Worlde
+        Gamerworlde
     </title>
-
-    <script src="/public/node_modules/axios/dist/axios.min.js"></script>
-    <link rel="stylesheet" href="public/node_modules/bulma/css/bulma.css" />
-    <!--
-        <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-    -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script type="module" src="/public/js/login.js"></script>
+    <link rel="stylesheet" href="/public/css/mystyles.css">
 </head>
 
 <body>
@@ -26,43 +18,40 @@
        <img visibility=hidden id="mainLogo" src="/public/img/gamerWorldeLogo.png"> 
     -->
 
-    <div class="container">
-        <div id="loginForm">
+    <section id="section" class="section">
+        <div class="container">
+            <div id="loginForm" class="card">
+                <div class="card-content">
+                    <div class="field">
+                        <label class="label">Username</label>
+                        <div class="control">
+                            <input class="input is-hovered" type="text" name="username" id="username" placeholder="Username">
+                        </div>
+                    </div>
 
-            <div class = "field">
-                <label class = "label">Username</label>
-                <div class = "control">
-                    <input class="input" type="text" name="username" id="username" placeholder="Username">
-                </div>
-            </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control">
+                            <input class="input is-hovered" type="password" name="password" id="password" placeholder="Password">
+                        </div>
+                    </div>
 
-            <div class = "field">
-                <label class = "label">Password</label>
-                <div class = "control">
-                    <input class="input" type="password" name="password" id="password" placeholder="Password">
-                </div>
-            </div>
-            
-            <div class="field is-grouped">
-                <div class="control">
-                    <button class="button is-black" id="login">Login</button>
-                </div>
-                <div class="control">
-                    <button class="button is-black" id="createAccount">Create Account</button>
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-primary" id="login">Login</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-primary is-light" id="createAccount">Create Account</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-   
+    </section>
 
-    <!--
-         </img>
-        <div id="screenBar"> </div>
-    
-    -->
-
-    <script src='public/node_modules/jquery/dist/jquery.js'></script>
-    <script src="public/node_modules/axios/dist/axios.js"></script>
+    <script src="/public/node_modules/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="module" src="/public/js/login.js"></script>
 </body>
 
 </html>

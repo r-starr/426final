@@ -6,6 +6,11 @@
     <title>gamerworlde</title>
     <link rel="stylesheet" href="/public/css/mystyles.css">
     <link rel="stylesheet" href="/public/css/home.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/reset-min.css" integrity="sha256-t2ATOGCtAIZNnzER679jwcFcKYfLlw01gli6F6oszk8=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+        integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
+        
 </head>
 
 <body>
@@ -18,12 +23,24 @@
         <div class="navbar-menu">
             <div class="navbar-end">
                 <div class="navbar-item">
-                </div>
-                <div class="navbar-item">
-                    <div class="ais-InstantSearch">
-                        <div id="searchbox"></div>
-                    </div>
+                    <div class="container">
 
+
+                        <div class="ais-InstantSearch">
+                            <h1>InstantSearch.js</h1>
+
+                            <div class="right-panel">
+                                <div id="searchbox"></div>
+                                <div id="hits"></div>
+                                <div id="pagination"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="navbar-item">
+                <div class="container">
                     <div class="buttons">
                         <a class="button is-primary" id="logout">
                             <strong>Log out</strong>
@@ -32,18 +49,18 @@
                 </div>
             </div>
         </div>
+        </div>
     </nav>
     <section class="section">
         <div class="container is-fluid">
             <div class="columns">
                 <div id="userContent" class="column is-one-quarter">
-                    <div class="card" id = "profileC">
+                    <div class="card" id="profileC">
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-left">
                                     <figure class="image is-96x96">
-                                        <img src="/public/img/icons/creeper.png"
-                                            alt="Placeholder image">
+                                        <img src="/public/img/icons/creeper.png" alt="Placeholder image">
                                     </figure>
                                 </div>
                                 <div class="media-content" id="userCard">
@@ -52,7 +69,7 @@
                             </div>
                         </div>
                         <footer class="card-footer">
-                            <a href="#" class="card-footer-item" id = "toProfile">My Reviews</a>
+                            <a href="#" class="card-footer-item" id="toProfile">My Reviews</a>
                             <a href="#" id="newReviewButton" class="card-footer-item">New Review</a>
                         </footer>
                     </div>
@@ -88,21 +105,21 @@
     </div>
 
     <div id="editForm" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-card">
-                <header class="modal-card-head">
-                    <p class="modal-card-title">Edit your review</p>
-                </header>
-                <section class="modal-card-body">
-                    <form id="newEditForm">
-                    </form>
-                </section>
-                <footer class="modal-card-foot">
-                    <button id="submitEdit" class="button is-success">Submit</button>
-                    <button id="cancelEdit" class="button">Cancel</button>
-                </footer>
-            </div>
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Edit your review</p>
+            </header>
+            <section class="modal-card-body">
+                <form id="newEditForm">
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button id="submitEdit" class="button is-success">Submit</button>
+                <button id="cancelEdit" class="button">Cancel</button>
+            </footer>
         </div>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/node_modules/axios/dist/axios.js"></script>
@@ -110,6 +127,10 @@
     <script src="/public/js/home/render.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearch.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3.35.1/dist/algoliasearchLite.min.js"
+        integrity="sha256-5rOQwvvJdM9oDYQYCGzaJuuTy6SUALjma3OtzEGyJM0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.0.0/dist/instantsearch.production.min.js"
+        integrity="sha256-6S7q0JJs/Kx4kb/fv0oMjS855QTz5Rc2hh9AkIUjUsk=" crossorigin="anonymous"></script>
     <script src="/public/js/home/algolia.js"></script>
 
 </body>

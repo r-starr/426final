@@ -3,10 +3,11 @@
 <html>
 
 <head>
-    <title>Gamerworlde</title>
+    <title>gamerworlde</title>
     <link rel="stylesheet" href="/public/css/mystyles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
+        integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/home.css">
-
 </head>
 
 <body>
@@ -35,15 +36,63 @@
         </div>
     </nav>
     <section class="section">
-            <div class="container">
-                <div class="columns">
-                    <div id="feedContent" class="column"></div>
+        <div class="container is-fluid">
+            <div class="columns">
+                <div id="userContent" class="column is-one-quarter">
+                    <div class="card" id = "profileC2">
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-96x96">
+                                        <img src="/public/img/icons/creeper.png"
+                                            alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="media-content" id="userCard">
+                                    This is your profile, <p id="userNameHere"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="card-footer">
+                            <a href="#" class="card-footer-item" id = "toHome">Back to home</a>
+                        </footer>
+                    </div>
                 </div>
-        </section>
+
+                <div id="feedContent" class="column"></div>
+            </div>
+    </section>
+    <div id="newReview" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Add a new review</p>
+            </header>
+            <section class="modal-card-body">
+                <form id="newReviewForm">
+                    <div class="field">
+                        <div class="control">
+                            <div id="gameSelect" class="select">
+                                <select>
+                                    <option value="default">Select a game to review</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+            <footer class="modal-card-foot">
+                <button id="submitReview" class="button is-success">Submit</button>
+                <button id="cancelReview" class="button">Cancel</button>
+            </footer>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/node_modules/axios/dist/axios.js"></script>
     <script src="/public/js/requests.js"></script>
-    <script src="/public/js/profile/render.js"></script>
+    <script src="/public/js/home/profile.js"></script>
+
 </body>
 
 </html>

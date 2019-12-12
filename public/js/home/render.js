@@ -310,6 +310,12 @@ $(document).ready(() => {
         localStorage.removeItem('jwt');
         window.location.href = "/";
     });
+
+    $("#toProfile").on("click", null, null, e => {
+        e.preventDefault;
+        window.location.href = "/profile";
+    });
+
     $("#gameSelect > select").on("change", null, null, renderReviewForm);
     populateGameOptions();
     renderReviewFeed();

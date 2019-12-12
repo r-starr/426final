@@ -39,3 +39,13 @@ body {
 .review-footer-item {
     padding: 0.5rem 0 0.5rem 0;
 }
+
+#profileC {
+    width: 300px;
+    position: fixed;
+}
+
+#profileC2 {
+    width: 300px;
+    position: fixed;
+}

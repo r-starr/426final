@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
         integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/home.css">
+    <img src="/public/img/icons/" alt="profile picture">
 </head>
 
 <body>
@@ -39,12 +40,12 @@
         <div class="container is-fluid">
             <div class="columns">
                 <div id="userContent" class="column is-one-quarter">
-                    <div class="card">
+                    <div class="card" id = "profileC">
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-left">
                                     <figure class="image is-96x96">
-                                        <img src="https://bulma.io/images/placeholders/96x96.png"
+                                        <img src="/public/img/icons/creeper.png"
                                             alt="Placeholder image">
                                     </figure>
                                 </div>
@@ -54,7 +55,7 @@
                             </div>
                         </div>
                         <footer class="card-footer">
-                            <a href="#" class="card-footer-item">My Reviews</a>
+                            <a href="#" class="card-footer-item" id = "toProfile">My Reviews</a>
                             <a href="#" id="newReviewButton" class="card-footer-item">New Review</a>
                         </footer>
                     </div>
@@ -110,49 +111,9 @@
     <script src="/public/node_modules/axios/dist/axios.js"></script>
     <script src="/public/js/requests.js"></script>
     <script src="/public/js/home/render.js"></script>
-    <!--
-        latest releases and all upcomming packages
--->
+
     <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearch.min.js"></script>
-
-    <!--
-        search-only/lite client
--->
-    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearchLite.min.js"></script>
-
-    <!-- <script>
-        const search = instantsearch({
-            indexName: 'games',
-            searchClient: algoliasearch('I5UBGGYBBY', '27a8eba63dfa2290c9e22e5dc680a37c'),
-        });
-
-        search.addWidget(
-            instantsearch.widgets.searchBox({
-                container: '#searchbox',
-            })
-        );
-
-        search.addWidget(
-            instantsearch.widgets.hits({
-                container: '#hits',
-                templates: {
-                    item: `
-                        <div>
-                        <img src="{{image}}" align="left" alt="{{name}}" />
-                        <div class="hit-name">
-                            {{#helpers.highlight}}{ "attribute": "name" }{{/helpers.highlight}}
-                        </div>
-                        <div class="hit-description">
-                            {{#helpers.highlight}}{ "attribute": "description" }{{/helpers.highlight}}
-                        </div>
-                        <div class="hit-price">\${{price}}</div>
-                        </div>
-                    `,
-                },
-            })
-        );
-        search.start(); -->
-    </script>
+    <script src="/public/js/home/algolia.js"></script>
 
 </body>
 

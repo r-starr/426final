@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Gamerworlde</title>
+    <link rel="stylesheet" href="/public/css/mystyles.css">
+    <link rel="stylesheet" href="/public/css/home.css">
+
+</head>
+
+<body>
+    <nav class="navbar is-fixed-top is-dark">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="/home">
+                <img src="/public/img/gamerWorldeLogo.png">
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-item">
+                </div>
+                <div class="navbar-item">
+                    <div class="ais-InstantSearch">
+                        <div id="searchbox"></div>
+                    </div>
+
+                    <div class="buttons">
+                        <a class="button is-primary" id="logout">
+                            <strong>Log out</strong>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section class="section">
+            <div class="container">
+                <div class="columns">
+                    <div id="feedContent" class="column"></div>
+                </div>
+        </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/public/node_modules/axios/dist/axios.js"></script>
+    <script src="/public/js/requests.js"></script>
+    <script src="/public/js/profile/render.js"></script>
+</body>
+
+</html>

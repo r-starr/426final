@@ -193,14 +193,13 @@ async function onEditSubmit() {
 //deletes review
 async function removeReview(event) {
     let id = $(event.target).attr("reviewID");
-    console.log(id);
-    console.log(await deleteReview(id));
+    await deleteReview(id);
     $(`#${id}`).remove();
 }
 
 //edits review
 async function editReview(event) {
-
+    
 }
 
 function parseJWT(token) {

@@ -45,7 +45,7 @@ function renderHeartCount(count) {
 }
 
 function renderReviewFooter(review) {
-    let footer= $(`<footer class="review-footer">
+    let footer = $(`<footer class="review-footer">
     <p class="review-footer-item">Reviewed on ${review.date_created}</p>
   </footer>`);
 
@@ -97,7 +97,7 @@ async function renderReviewForm(event) {
                             <div class="field">
                                 <label class="label">Your review:</label>
                                 <div class="control">
-                                    <textarea id="reviewBody" class="textarea" placeholder="Review text"></textarea>
+                                    <textarea id="reviewBody" class="textarea is-hovered" placeholder="Review text"></textarea>
                                 </div>
                             </div>`
         let form = $("#newReviewForm");
@@ -135,13 +135,12 @@ async function onReviewSubmit(event) {
     let success = true;
     try {
         await submitReview(gameId, reviewBody, rating);
-        location.reload();
     } catch (error) {
         success = false;
     }
     console.log(`Game: ${gameId}, Review: ${reviewBody}, Rating: ${rating}`);
 
-    let successMessage = `<article id="reviewSuccess" class="message is-success">
+    let successMessage = `<article id="reviewEditSuccess" class="message is-success">
                             <div class="message-header">
                                 <p>Success</p>
                                 <button class="delete closeButton" aria-label="delete"></button>
@@ -151,13 +150,90 @@ async function onReviewSubmit(event) {
                             </div>
                         </article>`
 
-    let errorMessage = `<article id="reviewError" class="message is-danger">
+    let errorMessage = `<article id="reviewEditError" class="message is-danger">
                             <div class="message-header">
                                 <p>Error</p>
                                 <button class="delete closeButton" aria-label="delete"></button>
                             </div>
                             <div class="message-body">
                             There was an error while submitting your review.
+                            </div>
+                        </article>`
+
+    if (success) {
+        $("#userContent").append($(successMessage));
+        $(".closeButton").on("click", null, null, event => {
+            $("#reviewEditSuccess").remove();
+        });
+    } else {
+        $("#userContent").append($(errorMessage));
+        $(".closeButton").on("click", null, null, event => {
+            $("#reviewEditError").remove();
+        });
+    }
+    resetReviewForm();
+    $("#newReview").removeClass("is-active")
+}
+
+//renders edit form
+async function renderEditForm(event) {
+    console.log("you madeit buddy");
+    let review = event.data;
+    event.preventDefault();
+    $("#editForm").addClass("is-active");
+    let formFields = `<div class="field">
+                                <label class="label">Your rating:</label>
+                                <div class="control">
+                                    <input id="editRatingSlider" type="range" min="0" max="5" step="1" value="${review.rating}" class="slider">
+                                    <span id="editRatingNum" class="subtitle">${review.rating}/5</span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Your review:</label>
+                                <div class="control">
+                                    <textarea id="editReviewBody" class="textarea is-hovered" reviewID=${review.id} placeholder="Review text">${review.text}</textarea>
+                                </div>
+                            </div>`
+    let form = $("#newEditForm");
+    if (form.find("#editRatingSlider").length == 0) {
+        form.append($(formFields));
+        $("#editRatingSlider").on("input", null, null, e => {
+            let val = $(e.target).val();
+            $("#editRatingNum").text(`${val}/5`);
+        });
+    }
+}
+
+//submits edit
+async function onEditSubmit(event) {
+    let rating = $("#editRatingSlider").val();
+    let text = $("#editReviewBody").val();
+    let id = $("#editReviewBody").attr("reviewID");
+
+    let success = true;
+    try {
+        await editReview(id, rating, text);
+    } catch (error) {
+        success = false;
+    }
+
+    let successMessage = `<article id="reviewSuccess" class="message is-success">
+                            <div class="message-header">
+                                <p>Success</p>
+                                <button class="delete closeButton" aria-label="delete"></button>
+                            </div>
+                            <div class="message-body">
+                            Review edit submitted sucessfully!
+                            </div>
+                        </article>`
+
+    let errorMessage = `<article id="reviewError" class="message is-danger">
+                            <div class="message-header">
+                                <p>Error</p>
+                                <button class="delete closeButton" aria-label="delete"></button>
+                            </div>
+                            <div class="message-body">
+                            There was an error while submitting your review edit.
                             </div>
                         </article>`
 
@@ -172,44 +248,10 @@ async function onReviewSubmit(event) {
             $("#reviewError").remove();
         });
     }
-    resetReviewForm();
-    $("#newReview").removeClass("is-active")
-}
-
-//renders edit form
-async function renderEditForm(event) {
-    let form = `
-    <div class="control">
-        <textarea class="textarea is-info" id = "editTA">`+ event.data.text + `</textarea>
-    </div>
-    <br>
-    <div class="control">
-        <input id="rating_edit" type="range" min="0" max="5" step="1" value="`+event.data.rating+`" class="slider">
-        <span id="ratingNum" class="subtitle">`+event.data.rating+`/5</span>
-    </div>
-    `;
-
-    let postButton = $(`<button class="review-footer-button button is-primary" reviewID="${event.data.id}">Post</button>`);
-    postButton.on("click", null, event.data, onEditSubmit);
-
-    let cancelButton = $(`<button class="review-footer-button button is-primary" reviewID=${event.data.id}>Cancel</button>`);
-    cancelButton.on("click", null, event.data, renderReviewCard);
-
-    form += postButton;
-    form += cancelButton;
-
-    //document.getElementById(event.data.id+"_content").innerHTML = form;
-    
-    //return footer;
-}
-
-//closes edit form
-async function resetEditForm() {
-
-}
-
-//submits edit
-async function onEditSubmit() { 
+    $("#newEditForm").empty()
+    $("#editForm").removeClass("is-active")
+    $("#feedContent").empty();
+    renderReviewFeed();
 
 }
 
@@ -218,11 +260,6 @@ async function removeReview(event) {
     let id = $(event.target).attr("reviewID");
     await deleteReview(id);
     $(`#${id}`).remove();
-}
-
-//edits review
-async function editReview(event) {
-    
 }
 
 function parseJWT(token) {
@@ -255,6 +292,13 @@ $(document).ready(() => {
         e.preventDefault();
         resetReviewForm();
         $("#newReview").removeClass("is-active");
+    });
+
+    $("#submitEdit").on("click", null, null, onEditSubmit);
+
+    $("#cancelEdit").on("click", null, null, e => {
+        e.preventDefault();
+        $("#editForm").removeClass("is-active");
     });
 
     // $(document).on("click", "#editReview", renderEditForm);

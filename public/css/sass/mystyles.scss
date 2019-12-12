@@ -9,8 +9,8 @@ $dark-gray: #3C3C3B;
 $lighter-gray: rgb(99, 99, 99);
 $darker-gray: rgb(54, 54, 54);
 $darkest-gray: rgb(30, 30, 30);
-$light-red: #FF3A48;
-$dark-yellow: #FFBD48;
+$light-red: rgb(92, 28, 134);
+$dark-yellow: rgb(54, 57, 209);
 $white: #ffffff;
 $black: #000000;
 
@@ -24,6 +24,7 @@ $link: $light-blue;
 $scheme-main: $darker-gray;
 $scheme-main-bis: $darkest-gray;
 $text-strong: $dark-yellow;
+$textarea-border-color: $darkest-gray;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 

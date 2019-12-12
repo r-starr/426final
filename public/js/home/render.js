@@ -21,7 +21,7 @@ async function renderReviewCard(review) {
                     <p class="rating"></p>
                 </div>
             </div>
-            <div class="content">
+            <div class="content" id = ${review.id}_content>
                 ${review.text}
             </div>
         </div>
@@ -51,7 +51,7 @@ function renderReviewFooter(review) {
 
     if (review.user_id === getCurrentUserID()) {
         let editButton = $(`<button class="review-footer-button button is-primary" reviewID="${review.id}">Edit</button>`);
-        editButton.on("click", null, null, editReview);
+        editButton.on("click", null, review, renderEditForm);
         let deleteButton = $(`<button class="review-footer-button button is-primary" reviewID=${review.id}>Remove</button>`);
         deleteButton.on("click", null, null, removeReview);
         footer.append(editButton, deleteButton);
@@ -177,17 +177,40 @@ async function onReviewSubmit(event) {
 }
 
 //renders edit form
-async function renderEditForm() {
-    console.log("element");
+async function renderEditForm(event) {
+    let form = `
+    <div class="control">
+        <textarea class="textarea is-info" id = "editTA">`+ event.data.text + `</textarea>
+    </div>
+    <br>
+    <div class="control">
+        <input id="rating_edit" type="range" min="0" max="5" step="1" value="`+event.data.rating+`" class="slider">
+        <span id="ratingNum" class="subtitle">`+event.data.rating+`/5</span>
+    </div>
+    `;
+
+    let postButton = $(`<button class="review-footer-button button is-primary" reviewID="${event.data.id}">Post</button>`);
+    postButton.on("click", null, event.data, onEditSubmit);
+
+    let cancelButton = $(`<button class="review-footer-button button is-primary" reviewID=${event.data.id}>Cancel</button>`);
+    cancelButton.on("click", null, event.data, renderReviewCard);
+
+    form += postButton;
+    form += cancelButton;
+
+    //document.getElementById(event.data.id+"_content").innerHTML = form;
+    
+    //return footer;
 }
 
 //closes edit form
 async function resetEditForm() {
+
 }
 
 //submits edit
-async function onEditSubmit() {
-    //call render review card and replace it
+async function onEditSubmit() { 
+
 }
 
 //deletes review

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@7.3.1/themes/algolia-min.css"
         integrity="sha256-HB49n/BZjuqiCtQQf49OdZn63XuKFaxcIHWf0HNKte8=" crossorigin="anonymous">
     <link rel="stylesheet" href="/public/css/home.css">
-    <img src="/public/img/icons/" alt="profile picture">
 </head>
 
 <body>
@@ -40,7 +39,7 @@
         <div class="container is-fluid">
             <div class="columns">
                 <div id="userContent" class="column is-one-quarter">
-                    <div class="card" id = "profileC">
+                    <div class="card" id = "profileC2">
                         <div class="card-content">
                             <div class="media">
                                 <div class="media-left">
@@ -50,13 +49,12 @@
                                     </figure>
                                 </div>
                                 <div class="media-content" id="userCard">
-                                    Welcome, <p id="userNameHere"></p>
+                                    This is your profile, <p id="userNameHere"></p>
                                 </div>
                             </div>
                         </div>
                         <footer class="card-footer">
-                            <a href="#" class="card-footer-item" id = "toProfile">My Reviews</a>
-                            <a href="#" id="newReviewButton" class="card-footer-item">New Review</a>
+                            <a href="#" class="card-footer-item" id = "toHome">Back to home</a>
                         </footer>
                     </div>
                 </div>
@@ -93,10 +91,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="/public/node_modules/axios/dist/axios.js"></script>
     <script src="/public/js/requests.js"></script>
-    <script src="/public/js/home/render.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@3/dist/algoliasearch.min.js"></script>
-    <script src="/public/js/home/algolia.js"></script>
+    <script src="/public/js/home/profile.js"></script>
 
 </body>
 

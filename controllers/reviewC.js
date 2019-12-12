@@ -1,4 +1,5 @@
 var db = require('better-sqlite3')('./database.db');
+const algoliasearch = require('algoliasearch');
 
 class reviewController {
     constructor() {
@@ -18,6 +19,7 @@ class reviewController {
 
     static index() {
         let result = db.prepare('SELECT * FROM reviews ORDER BY id DESC').all();
+        this.algolia(result);
         return result;
     }
 
@@ -57,6 +59,15 @@ class reviewController {
 
     destroyTable () {
         db.exec('DROP TABLE reviews');
+    }
+
+    static algolia (reviews) {
+        const client = algoliasearch('I5UBGGYBBY', '37c61a03f49460ca5d42260e68c5b214');
+        const index = client.initIndex('reviews');
+
+        index.addObjects(reviews, (err, content) =>  {
+            console.log(content);
+        });
     }
 }
 module.exports = reviewController;

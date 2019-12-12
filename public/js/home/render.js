@@ -216,14 +216,13 @@ async function onEditSubmit() {
 //deletes review
 async function removeReview(event) {
     let id = $(event.target).attr("reviewID");
-    console.log(id);
-    console.log(await deleteReview(id));
+    await deleteReview(id);
     $(`#${id}`).remove();
 }
 
 //edits review
 async function editReview(event) {
-
+    
 }
 
 function parseJWT(token) {
@@ -267,6 +266,12 @@ $(document).ready(() => {
         localStorage.removeItem('jwt');
         window.location.href = "/";
     });
+
+    $("#toProfile").on("click", null, null, e => {
+        e.preventDefault;
+        window.location.href = "/profile";
+    });
+
     $("#gameSelect > select").on("change", null, null, renderReviewForm);
     populateGameOptions();
     renderReviewFeed();
